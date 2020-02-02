@@ -12,7 +12,7 @@
         <link rel="icon" href="../src/icon/js.png" type="image/x-icon">
         <title>My JS experience</title>
         <style>
-            #editFavoritFilm {
+            #editFavoriteFilm {
                 display: none;
             }
         </style>
@@ -25,11 +25,12 @@
 
                     <a href="../index.html">Back</a>
 
-                    <h3>Program 2 - FavoritFilm</h3>
-                    <p> This program can ceate object myFavoritFilm</p>
-                    <button type="button" onclick=editFavoritFilm()>Edit Faforit Film</button>
-                    <button type="button" onclick='document.getElementById("yourFilm").innerHTML=showFavoritFilm()'>Show
-                        Favorit Film</button>
+                    <h3>Program 2 - FavoriteFilm</h3>
+                    <p> This program can ceate object myFavoriteFilm</p>
+                    <button type="button" onclick=editFavoriteFilm()>Edit Favorite Film</button>
+                    <button type="button"
+                        onclick='document.getElementById("yourFilm").innerHTML=showFavoriteFilm()'>Show
+                        Favorite Film</button>
                 </div>
 
             </div>
@@ -37,11 +38,11 @@
                 <div class="col- mx-auto" id="yourFilm"></div>
             </div>
 
-            <div class="row" id="editFavoritFilm">
+            <div class="row" id="editFavoriteFilm">
                 <div class="col-8 mx-auto p-5 border">
                     <form name="form__film">
                         <div class="form-group row">
-                            <label for="filmName" class="col-sm-3 col-form-label">Your Favorit Film</label>
+                            <label for="filmName" class="col-sm-3 col-form-label">Your Favorite Film</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="filmName" placeholder="Lord Of The Rings">
                             </div>
@@ -95,7 +96,7 @@
                         <div class="form-group row">
                             <div class="col-sm-10">
                                 <button type="button" class="btn btn-primary"
-                                    onclick='document.getElementById("yourFilm").innerHTML=saveFavoritFilm()'>Save</button>
+                                    onclick='document.getElementById("yourFilm").innerHTML=saveFavoriteFilm()'>Save</button>
                             </div>
                         </div>
                     </form>
@@ -103,7 +104,8 @@
             </div>
         </div>
 
-        <script src=" ./program2.js"> </script> <!-- Optional JavaScript -->
+        <script src=" ./program2.js"> </script>
+        <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
