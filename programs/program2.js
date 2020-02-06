@@ -72,4 +72,3 @@ function showFavoriteFilm() {
   </tbody>
 </table>`;
 }
-

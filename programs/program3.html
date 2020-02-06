@@ -9,37 +9,38 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="icon" href="./src/icon/js.png" type="image/x-icon">
+        <link rel="icon" href="../src/icon/js.png" type="image/x-icon">
+        <link rel="stylesheet" href="program3.css">
         <title>My JS experience</title>
     </head>
 
     <body>
         <div class="container mt-5">
             <div class="row">
-                <ul class="col-6 mx-auto mt-auto text-center">
-                    <div class>
-                        <h1>
-                            It is my JS programs
-                        </h1>
+                <div class="col-6 mx-auto text-center">
+
+                    <a href="../index.html">Back</a>
+                    <h3>Program 3 - Mouse and ball</h3>
+                    <button class="btn-primary" onclick="circle()"> circle</button>
+                    <button class="btn-primary" onclick="square()"> square</button>
+                    <button class="btn-primary" onclick="moon()"> moon</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 mx-auto text-center window__game rounded">
+                    <div id="shape" class="">
+
                     </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="./programs/program1.html">Program 1 - Change Text</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="./programs/program2.html">Program 2 - FavoriteFilm</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="./programs/program3.html">Program 3 - Mouse and ball</a>
-                        </li>
-                    </ul>
-
-                </ul>
-
+                </div>
             </div>
         </div>
 
 
+
+        <script src=" ./program3.js"> </script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

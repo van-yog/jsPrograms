@@ -1,0 +1,53 @@
+body {
+  position: relative;
+  margin: 0;
+}
+
+.circle {
+  position: absolute;
+  top: 48%;
+  left: 48%;
+  display: block;
+  color: #ffffff;
+  background-color: rgb(57, 90, 240);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.square {
+  position: absolute;
+  top: 48%;
+  left: 48%;
+  display: block;
+  color: #ffffff;
+  background-color: rgb(30, 128, 46);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.moon {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 48%;
+  left: 48%;
+  border-radius: 50%;
+  box-shadow: 8px 8px 0 0 #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.window__game {
+  width: 500px;
+  height: 500px;
+  background-color: aqua;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
