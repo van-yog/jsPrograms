@@ -31,6 +31,11 @@ function saveFavoriteFilm() {
   FavoriteFilm.filmRate = document.form__film.filmRate.value;
 }
 
+function saveAndShow() {
+  saveFavoriteFilm();
+  return showFavoriteFilm();
+}
+
 function showFavoriteFilm() {
   elem.style.display = "none";
   elem2.style.display = "block";

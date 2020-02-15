@@ -9,7 +9,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="icon" href="./src/icon/js.png" type="image/x-icon">
+        <link rel="icon" href="../../src/icon/js.png" type="image/x-icon">
+        <link rel="stylesheet" href="program3.css">
         <title>My JS experience</title>
     </head>
 
@@ -19,23 +20,23 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="./index.html">Front-End</a>
+            <a class="navbar-brand" href="../../index.html">Front-End</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="./programs/program1/program1.html">1 - Change Text</a>
+                        <a class="nav-link" href="../program1/program1.html">1 - Change Text</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./programs/program2/program2.html">2 - FavoriteFilm</a>
+                        <a class="nav-link" href="../program2/program2.html">2 - FavoriteFilm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./programs/program3/program3.html">3 - Mouse and shape</a>
+                        <a class="nav-link" href="../program3/program3.html">3 - Mouse and shape</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./programs/program4/program4.html">4 - JQuery</a>
+                        <a class="nav-link" href="../program4/program4.html">4 - JQuery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./programs/program5/program5.html">5 - Menu</a>
+                        <a class="nav-link" href="../program5/program5.html">5 - Menu</a>
                     </li>
                 </ul>
             </div>
@@ -43,14 +44,14 @@
         </nav>
 
         <div class="container-fluid">
-            <div class="row m-1">
+            <div class="row m-md-1 m-0">
+                <div class="col-12 mx-auto mt-auto text-center mb-md-3 mb-0">
+                    <h1 class="m-1 d-none d-md-inline">
+                        <a href="../../index.html" class="text-muted text-decoration-none ">Frond-End developer</a>
 
-                <div class="col-12 mx-auto mt-auto text-center mb-3">
-                    <h1 class="m-1">
-                        Frond-End developer
                     </h1>
-                    <h2>Kharchenko Ivan
-
+                    <h2>
+                        3 - Mouse and shape
                     </h2>
                 </div>
 
@@ -61,75 +62,76 @@
                                 Programs</span>
                         </li>
                         <li class="list-group-item">
-                            <a href="./programs/program1/program1.html">
-                                1 - Change Text
+                            <a href="../program1/program1.html">
+                                1 - Cnange Text
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="./programs/program2/program2.html">2 - FavoriteFilm</a>
+                            <a href="../program2/program2.html">2 - FavoriteFilm</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="./programs/program3/program3.html">3 - Mouse and shape</a>
+                            <a href="../program3/program3.html">3 - Mouse and shape</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="./programs/program4/program4.html">4 - JQuery</a>
+                            <a href="../program4/program4.html">4 - JQuery</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="./programs/program5/program5.html">5 - Menu</a>
+                            <a href="../program5/program5.html">5 - Menu</a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-12 col-md-6">
-                    <h5>Start of my education</h5>
-                    <p>
-                        I think that here you can read about me and my history of enter into Programming world.
-                    </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ratione id quibusdam magni
-                        magnam pariatur, fuga nesciunt saepe vel? Molestiae labore veritatis eligendi architecto,
-                        obcaecati tempore deserunt tempora temporibus. Est illum fugit voluptates tenetur officiis
-                        saepe, veritatis dignissimos. Neque, nisi.</p>
-                </div>
-                <div class="col-12 col-md-3 mt-1 mt-md-0">
-                    <ul class="list-group mb-3">
-                        <li class="list-group-item">
-                            <span class="font-weight-bold">
-                                My comercial projects
-                            </span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://www.trainerdasha.com" target="_blank">
-                                1 - www.trainerdasha.com
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://www.actorviktor.kiev.ua" target="_blank">
-                                2 - www.actorviktor.kiev.ua
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" target="_blank">
-                                3 - www.ioneproduction.com
-                            </a>
-                        </li>
-                    </ul>
 
+                <div class="col-12 col-md-6">
+                    <div class="text-center mb-2">
+                        <button class="btn btn-primary mx-1" onclick="circle()"> Circle</button>
+                        <button class="btn btn-primary mx-1" onclick="square()"> Square</button>
+                        <button class="btn btn-primary mx-1" onclick="moon()"> Moon</button>
+                    </div>
+                    <div class="col-12 mx-auto text-center window__game rounded">
+                        <span id="shape">
+
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 mt-3 mt-md-0">
                     <ul class="list-group">
                         <li class="list-group-item">
                             <span class="font-weight-bold">
-                                History of first steps ( beta block)
+                                Work with
                             </span>
                         </li>
                         <li class="list-group-item">
-                            <a href="">First try</a>
+                            Html <br>
+                            <span class="small text-mutted">
+                                forms, button
+                            </span>
                         </li>
                         <li class="list-group-item">
-                            <a href="">Second try</a></li>
+                            CSS <br>
+                            <span class="small text-mutted">
+                                box-shadow, transition, position:absolute
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            JavaScript <br>
+                            <span class="small text-mutted">
+                                querySelector(), getBoundingClientRect(), addEventListener(), classList.add(),
+                                classList.remove()
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            Bootstrap-4 <br>
+                            <span class="small text-mutted">
+                                navbar, d-none, list-group, btn
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
 
-
+        <script src=" ./program3.js"> </script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
