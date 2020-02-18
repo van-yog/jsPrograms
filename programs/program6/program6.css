@@ -1,0 +1,71 @@
+.flight__label {
+  display: block;
+}
+
+.flight__section {
+  display: inline;
+  margin-right: 10px;
+}
+
+.flight__option {
+  display: flex;
+  width: 410px;
+  border: 2px solid rgba(0, 255, 255, 0.274);
+  background-color: rgba(0, 139, 139, 0.055);
+  border-radius: 10px;
+  padding: 5px 10px 10px 10px;
+  margin-bottom: 10px;
+}
+
+.flight {
+  background-color: rgba(143, 255, 255, 0.075);
+  padding: 10px;
+  border-radius: 10px;
+  border: 3px solid rgba(0, 255, 255, 0.089);
+}
+
+.flight__to,
+.flight__from {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 5px;
+}
+
+.flight__date {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 5px;
+  width: 190px;
+}
+
+.traveler {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 5px;
+  width: 90px;
+}
+
+.baggage {
+  height: 30px;
+}
+label {
+  margin-bottom: 0px;
+}
+
+.flight__find {
+  margin-top: 10px;
+  padding: 4px 25px;
+  border-radius: 10px;
+  background-color: rgba(61, 212, 223, 0.788);
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 5px #646464;
+  transition: all 0.2s ease-in-out;
+}
+
+.flight__find:hover {
+  transform: scale(1.05);
+}
+
+.m20 {
+  margin: 20px;
+}

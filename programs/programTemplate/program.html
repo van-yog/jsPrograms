@@ -10,10 +10,12 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="icon" href="../../src/icon/js.png" type="image/x-icon">
+        <link rel="stylesheet" href="program.css">
         <title>My JS experience</title>
     </head>
 
     <body>
+        <!-- Mobile navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light d-md-none">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,17 +59,20 @@
 
         </nav>
 
+
         <div class="container-fluid">
             <div class="row m-1">
+                <!-- Header -->
                 <div class="col-12 mx-auto mt-auto text-center mb-3">
                     <h1 class="m-1 d-none d-md-inline">
                         <a href="../../index.html" class="text-muted text-decoration-none ">Frond-End developer</a>
 
                     </h1>
                     <h2>
-                        1 - Change Text
+                        1 - Number of program
                     </h2>
                 </div>
+                <!-- Desktop navigation -->
                 <div class="col-3 d-none d-md-block">
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -108,19 +113,14 @@
                         </li>
                     </ul>
                 </div>
-
+                <!-- Main content -->
                 <div class="col-12 col-md-6 mb-5">
                     <p>Small program that change text when you push button</p>
-                    <button type="button" class="btn btn-primary mb-2"
-                        onclick='document.getElementById("firstJS").innerHTML="YES! You change Text"'>Change
-                        Text</button>
-                    <button type="button" class="btn btn-secondary mb-2"
-                        onclick='document.getElementById("firstJS").innerHTML="JavaScript can change HTML content."'>Refresh</button>
-
-                    <p id="firstJS">JavaScript can change HTML content.
-                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore inventore itaque illo est porro
+                        enim ea quia, obcaecati earum adipisci magni repellat cum quam velit quos architecto in omnis
+                        similique? Suscipit vel debitis quasi! Aut temporibus sit libero quis voluptatum!</p>
                 </div>
-
+                <!-- Right block with more information -->
                 <div class="col-12 col-md-3 mt-5 mt-md-0">
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -131,7 +131,13 @@
                         <li class="list-group-item">
                             Html <br>
                             <span class="small text-mutted">
-                                div, button,
+                                div, button
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            Css <br>
+                            <span class="small text-mutted">
+                                animation, :hover
                             </span>
                         </li>
                         <li class="list-group-item">
@@ -151,7 +157,12 @@
             </div>
         </div>
 
+        <!-- NEED FOOTER with social media, contacts, LinkID... -->
 
+
+        <script src="./program.js">
+
+        </script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
