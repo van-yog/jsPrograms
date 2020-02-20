@@ -12,6 +12,7 @@ let timerId;
 
 btnOpen.addEventListener("click", () => {
   menu.classList.toggle("open");
+
   let isOpen = menu.classList.contains("open");
 
   if (isOpen) {

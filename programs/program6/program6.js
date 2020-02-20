@@ -2,69 +2,70 @@
 const ONE_YEAR = 1;
 let period = ONE_YEAR;
 
-let flight = {
-  from: "Kyiv",
-  to: "Paris",
-  depart: "2000-00-00",
-  return: "2000-01-01",
-  adults: 0,
-  children: 0,
-  baggage: 1,
-  weight: 20
-};
+let flight = {};
 
-// Set date for input DEPART, min value is current date
-setDateForInput('input[name="flightDepart"]');
+// Set Min Max value of inputs data - min value is current date max current date + period
+setMinMaxDateForInput('input[name="flightDepart"]');
+setMinMaxDateForInput('input[name="flightReturn"]');
 
-let btnSearch = document.querySelector('input[name="flightSearch"]');
-let form = document.querySelector("#flight__form");
-let flightDepart = document.querySelector('input[name="flightDepart"]');
-let flightReturn = document.querySelector('input[name="flightReturn"]');
+//find our form with flight information
+let f = document.forms.flight__form;
+
+let btnSearch = f.flightSearch;
+let flightDepart = f.flightDepart;
+let flightReturn = f.flightReturn;
+
 let oneWay = document.querySelector("#flight__oneWay");
-let baggage = document.querySelector("#flightBaggage");
+let baggage = f.flightBaggage;
+let ticketInfo = document.querySelector("#ticket");
+console.log(ticketInfo);
 
-form.addEventListener("change", () => {
+f.addEventListener("change", () => {
   // checkFormValidation();
-  getFormValue();
+  tempInformation(flight);
   if (oneWay.checked) {
     flightReturn.disabled = true;
   } else {
     flightReturn.disabled = false;
   }
+
+  let ticketInfo = document.querySelector(".find-ticket");
+  if (ticketInfo) {
+    ticketInfo.classList.remove("find-ticket");
+    let p = document.querySelector(".bold");
+    p.innerHTML = "Temp information about your flight";
+  }
 });
 
 baggage.addEventListener("click", () => {
-  let countBaggage = document.querySelector("#flightBaggage");
   let smallCount = document.querySelector("#countBaggage");
   let weight = document.querySelector("#totalWeight");
-  smallCount.innerHTML = countBaggage.value;
-  weight.innerHTML = countBaggage.value * 20;
+
+  if (baggage.value) {
+    smallCount.innerHTML = baggage.value;
+    weight.innerHTML = baggage.value * 20;
+  }
 });
 
 flightDepart.addEventListener("change", () => {
-  let dateCurrent = new Date();
   flightReturn.min = flightDepart.value;
-  flightReturn.max = setMaxDateForInput(dateCurrent, period);
-  flightReturn.disabled = false;
 });
 
 btnSearch.addEventListener("click", () => {
   if (!validateForm()) {
-    console.log("Enter all data");
-    console.log(flight);
+    alert("Please enter all data");
+    return;
   }
-  // alert(" You start searching tickets, wait a second ");
+
+  findTicket();
 });
 
-console.log(flight);
-
-function setDateForInput(nameOfInput) {
-  let dateControl = document.querySelector(nameOfInput);
+function setMinMaxDateForInput(input) {
+  let dateControl = document.querySelector(input);
   let dateCurrent = new Date();
 
-  dateControl.value = getDateForInput(dateCurrent);
-  dateControl.min = dateControl.value;
-  dateControl.max = setMaxDateForInput(dateCurrent, period);
+  dateControl.min = getDateForInput(dateCurrent);
+  dateControl.max = getMaxDateForInput(dateCurrent, period);
 }
 
 function getDateForInput(date) {
@@ -84,7 +85,7 @@ function getDateForInput(date) {
   return dateForInput;
 }
 
-function setMaxDateForInput(date, period) {
+function getMaxDateForInput(date, period) {
   if (period > 2) {
     //rule of the Air Company, that sell tickes - MAX period 2 years
     period = 2;
@@ -94,69 +95,71 @@ function setMaxDateForInput(date, period) {
   return getDateForInput(date);
 }
 
-function getFormValue() {
-  let from = document.querySelector('input[name="flightFrom"]').value;
-  let to = document.querySelector('input[name="flightTo"]').value;
-  let depart = document.querySelector('input[name="flightDepart"]').value;
-  let returnBack = document.querySelector('input[name="flightReturn"]').value;
-  let adults = document.querySelector('input[name="flightAdults"]').value;
-  let children = document.querySelector('input[name="flightChildren"]').value;
-  let baggage = document.querySelector("#flightBaggage").value;
-  let div = document.querySelector("#ticket");
+function tempInformation(flight) {
+  document.querySelector("#ticket__from").innerText = flight.from =
+    f.flightFrom.value;
+  document.querySelector("#ticket__to").innerText = flight.to =
+    f.flightTo.value;
+  document.querySelector("#ticket__depart").innerText = flight.depart =
+    f.flightDepart.value;
+  document.querySelector("#ticket__return").innerText = flight.return =
+    f.flightReturn.value;
+  document.querySelector("#ticket__adults").innerText = flight.adults = Number(
+    f.flightAdults.value
+  );
+  document.querySelector(
+    "#ticket__children"
+  ).innerText = flight.children = Number(f.flightChildren.value);
+  document.querySelector(
+    "#ticket__baggage"
+  ).innerText = flight.baggage = Number(f.flightBaggage.value);
 
-  flight.from = from;
-  flight.to = to;
-  flight.depart = depart;
-  flight.return = returnBack;
-  flight.adults = adults;
-  if (!adults) {
-    flight.adults = 0;
-  }
-  flight.children = children;
-  if (!children) {
-    flight.children = 0;
-  }
-  flight.baggage = baggage;
-  flight.weight = flight.baggage * 20;
+  document.querySelector("#ticket__weight").innerText = flight.weight = Number(
+    flight.baggage * 20
+  );
 
-  console.log(flight);
-
-  div.innerHTML = "";
   if (oneWay.checked) {
-    div.innerHTML = `Your ticket: <b>${flight.from} - ${flight.to} </b> <br>
-  Departure date: <b>${flight.depart}</b> <br>
-  Return date: <br>
-  Adult travelers: <b>${flight.adults}</b> <br> 
-  Children travelers: <b>${flight.children}</b> <br>
-  Baggage place: <b>${flight.baggage}</b> , sum weight: <b>${flight.weight}</b> kg`;
+    document
+      .querySelector("#ticket__return")
+      .parentElement.classList.add("close");
   } else {
-    div.innerHTML = `Your ticket: <b>${flight.from} - ${flight.to} - ${flight.from}</b> <br>
-  Departure date: <b>${flight.depart}</b> <br>
-  Return date: <b>${flight.return}</b> <br>
-  Adult travelers: <b>${flight.adults}</b> <br> 
-  Children travelers: <b>${flight.children}</b> <br>
-  Baggage place: <b>${flight.baggage}</b> , sum weight: <b>${flight.weight}</b> kg`;
+    document
+      .querySelector("#ticket__return")
+      .parentElement.classList.remove("close");
   }
 }
 
 function validateForm() {
-  getFormValue();
-  if (flight.adults && flight.children) {
-    console.log(flight.adults);
-    console.log(flight.children);
+  console.log(flight);
+  if (!flight) return false;
+  if (!flight.from || !flight.to) {
     return false;
   }
-  if (flight.from || flight.to) {
-    console.log(flight.from);
-    console.log(flight.to);
+
+  if (!flight.adults && !flight.children) {
     return false;
   }
-  if (!oneWay.checked) {
+
+  if (oneWay.checked) {
     console.log("Ticket only in one side");
-    if (flight.return) {
-      console.log(flight.return);
+    if (!flight.depart) {
+      console.log("Enter depart date");
+      console.log(flight.depart);
+      return false;
+    }
+  } else {
+    console.log("Ticken with return flight");
+    if (!flight.return || !flight.depart) {
+      console.log("Enter all dates for your travel");
       return false;
     }
   }
   return true;
+}
+
+function findTicket() {
+  let ticket = document.querySelector("#ticket");
+  ticket.classList.add("find-ticket");
+  let p = document.querySelector(".bold");
+  p.innerHTML = "We find to you ticket";
 }

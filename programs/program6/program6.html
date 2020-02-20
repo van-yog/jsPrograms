@@ -119,8 +119,6 @@
                 <!-- Main content -->
                 <div class="col-12 col-md-6 mb-5">
                     <main>
-                        <p>Program that emulate air ticket sales</p>
-
                         <form action="#" id="flight__form">
                             <fieldset class="flight">
                                 <legend class="">
@@ -129,11 +127,11 @@
 
                                 <label for="destination"><small>Return</small></label>
                                 <input id="flight__return" value="yes" class="flight__destination" type="radio"
-                                    name="destination" checked>
+                                    name="flightOneWay" checked>
 
                                 <label for="destination"><small>One way</small></label>
                                 <input id="flight__oneWay" value="no" class="flight__destination" type="radio"
-                                    name="destination">
+                                    name="flightOneWay">
 
                                 <div class="flight__option">
                                     <div class="flight__section">
@@ -166,35 +164,38 @@
                                         <label class="flight__label" for="flightReturn">
                                             <small>Return</small>
                                         </label>
-                                        <input class="flight__date" type="date" name="flightReturn" disabled>
+                                        <input class="flight__date" type="date" name="flightReturn">
                                     </div>
                                 </div>
 
                                 <div class="flight__option">
-
                                     <div class="flight__section">
                                         <label class="flight__label" for="flightAdults">
                                             <small>Adults</small>
                                         </label>
-                                        <input class="traveler" type="number" name="flightAdults" min="1" max="3">
+                                        <input class="traveler" type="number" name="flightAdults" min="0" max="5"
+                                            value="0">
                                     </div>
 
                                     <div class="flight__section">
                                         <label class="flight__label" for="flightChildren">
                                             <small>Children</small>
                                         </label>
-                                        <input class="traveler" type="number" name="flightChildren" min="0" max="2">
+                                        <input class="traveler" type="number" name="flightChildren" min="0" max="5"
+                                            value="0">
                                     </div>
-
                                     <div class="flight__section">
                                         <label class="flight__label" for="flightBaggage">
-                                            <small>Baggage, <span id="countBaggage">1</span> place <span
-                                                    id="totalWeight">20</span>kg</small>
+                                            <small>
+                                                <span id="countBaggage">1</span> place <span
+                                                    id="totalWeight">20</span>kg
+                                            </small>
                                         </label>
-                                        <select class="flight__date baggage" id="flightBaggage">
+
+                                        <select class="flight__date baggage" name="flightBaggage">
                                             <option selected value="0">
                                                 <small>
-                                                    Your baggage
+                                                    Choose baggage
                                                 </small>
                                             </option>
                                             <option value="1">1</option>
@@ -202,6 +203,11 @@
                                             <option value="3">3</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
                                             <option value="0">no</option>
                                         </select>
                                     </div>
@@ -230,8 +236,18 @@
                                 <button type="submit">Продолжить</button>
                             </fieldset> -->
                         </form>
-                        <div id="ticket">
-
+                        <div id="ticket" class="margin">
+                            <p class="bold">Temp information about your flight</p>
+                            <p> Air connection: <span id="ticket__from"></span> - <span id="ticket__to"></span><span>
+                            </p>
+                            <p>Departure date: <span id="ticket__depart"></span><span> </p>
+                            <p> Return date: <span id="ticket__return"></span></p>
+                            <p> Adult travelers: <span id="ticket__adults">0</span> </p>
+                            <p>Children travelers: <span id="ticket__children">0</p>
+                            <p>
+                                Baggage place: <span id="ticket__baggage">0</span> , sum weight: <span
+                                    id="ticket__weight">0 kg</span>
+                            </p>
                         </div>
                     </main>
                 </div>

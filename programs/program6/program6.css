@@ -5,11 +5,12 @@
 .flight__section {
   display: inline;
   margin-right: 10px;
+  width: 50%;
 }
 
 .flight__option {
   display: flex;
-  width: 410px;
+  width: 100%;
   border: 2px solid rgba(0, 255, 255, 0.274);
   background-color: rgba(0, 139, 139, 0.055);
   border-radius: 10px;
@@ -35,14 +36,17 @@
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding-left: 5px;
-  width: 190px;
+  width: 100%;
+}
+.flight__depart {
+  width: 100%;
 }
 
 .traveler {
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding-left: 5px;
-  width: 90px;
+  width: 85px;
 }
 
 .baggage {
@@ -68,4 +72,44 @@ label {
 
 .m20 {
   margin: 20px;
+}
+
+.margin p {
+  margin-bottom: 1px;
+}
+
+.close {
+  display: none;
+}
+
+.find-ticket {
+  margin-top: 10px;
+  background-color: rgba(50, 248, 93, 0.075);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: large;
+  border: 3px solid rgba(0, 255, 255, 0.089);
+}
+.bold {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .flight__option {
+    width: 90%;
+  }
+  .flight__section {
+    margin-left: 5px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .flight__option {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .traveler {
+    width: 100%;
+  }
 }
