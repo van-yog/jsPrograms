@@ -14,6 +14,7 @@
     </head>
 
     <body>
+        <!-- Mobile navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light d-md-none">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,10 +42,10 @@
                         <a class="nav-link" href="../program6/program6.html">6 - Air tickets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../program7/program7.html">7 - Program</a>
+                        <a class="nav-link" href="../program7/program7.html">7 - XMLHttpRequest</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../program8/program8.html">8 - Program</a>
+                        <a class="nav-link" href="../program8/program8.html">8 - Canvas Bird Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../program9/program9.html">9 - Program</a>
@@ -59,94 +60,104 @@
 
         <div class="container-fluid">
             <div class="row m-1">
+                <!-- Header -->
                 <div class="col-12 mx-auto mt-auto text-center mb-3">
-                    <h1 class="m-1 d-none d-md-inline">
-                        <a href="../../index.html" class="text-muted text-decoration-none ">Frond-End developer</a>
+                    <header>
+                        <h1 class="m-1 d-none d-md-inline">
+                            <a href="../../index.html" class="text-muted text-decoration-none ">Frond-End developer</a>
 
-                    </h1>
-                    <h2>
-                        1 - Change Text
-                    </h2>
+                        </h1>
+                        <h2>
+                            1 - Change Text
+                        </h2>
+                    </header>
                 </div>
+                <!-- Desktop navigation -->
                 <div class="col-3 d-none d-md-block">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="font-weight-bold ">
-                                Programs</span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program1/program1.html">
-                                1 - Change Text
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program2/program2.html">2 - FavoriteFilm</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program3/program3.html">3 - Mouse and shape</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program4/program4.html">4 - JQuery</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program5/program5.html">5 - Menu</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program6/program6.html">6 - Air tickets</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program7/program7.html">7 - Program</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program8/program8.html">8 - Program</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program9/program9.html">9 - Program</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../program10/program10.html">10 - Program</a>
-                        </li>
-                    </ul>
+                    <nav>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="font-weight-bold ">
+                                    Programs</span>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program1/program1.html">
+                                    1 - Change Text
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program2/program2.html">2 - FavoriteFilm</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program3/program3.html">3 - Mouse and shape</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program4/program4.html">4 - JQuery</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program5/program5.html">5 - Menu</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program6/program6.html">6 - Air tickets</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program7/program7.html">7 - XMLHttpRequest</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program8/program8.html">8 - Canvas Bird Game</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program9/program9.html">9 - Program</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../program10/program10.html">10 - Program</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-
+                <!-- Main content -->
                 <div class="col-12 col-md-6 mb-5">
-                    <p>Small program that change text when you push button</p>
-                    <button type="button" class="btn btn-primary mb-2"
-                        onclick='document.getElementById("firstJS").innerHTML="YES! You change Text"'>Change
-                        Text</button>
-                    <button type="button" class="btn btn-secondary mb-2"
-                        onclick='document.getElementById("firstJS").innerHTML="JavaScript can change HTML content."'>Refresh</button>
+                    <main>
+                        <p>Small program that change text when you push button</p>
+                        <button type="button" class="btn btn-primary mb-2"
+                            onclick='document.getElementById("firstJS").innerHTML="YES! You change Text"'>Change
+                            Text</button>
+                        <button type="button" class="btn btn-secondary mb-2"
+                            onclick='document.getElementById("firstJS").innerHTML="JavaScript can change HTML content."'>Refresh</button>
 
-                    <p id="firstJS">JavaScript can change HTML content.
-                    </p>
+                        <p id="firstJS">JavaScript can change HTML content.
+                        </p>
+                    </main>
                 </div>
-
+                <!-- Right block with more information -->
                 <div class="col-12 col-md-3 mt-5 mt-md-0">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="font-weight-bold">
-                                Work with
-                            </span>
-                        </li>
-                        <li class="list-group-item">
-                            Html <br>
-                            <span class="small text-mutted">
-                                div, button,
-                            </span>
-                        </li>
-                        <li class="list-group-item">
-                            JavaScript <br>
-                            <span class="small text-mutted">
-                                document.getElementById
-                            </span>
-                        </li>
-                        <li class="list-group-item">
-                            Bootstrap-4 <br>
-                            <span class="small text-mutted">
-                                navbar, d-none, list-group, btn
-                            </span>
-                        </li>
-                    </ul>
+                    <aside>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="font-weight-bold">
+                                    Work with
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                Html <br>
+                                <span class="small text-mutted">
+                                    div, button,
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                JavaScript <br>
+                                <span class="small text-mutted">
+                                    document.getElementById
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                Bootstrap-4 <br>
+                                <span class="small text-mutted">
+                                    navbar, d-none, list-group, btn
+                                </span>
+                            </li>
+                        </ul>
+                    </aside>
                 </div>
             </div>
         </div>

@@ -1,0 +1,14 @@
+.menu {
+  display: block;
+}
+
+.menu.open {
+  display: block;
+}
+
+.submenu {
+  display: none;
+}
+.submenu.open {
+  display: block;
+}
