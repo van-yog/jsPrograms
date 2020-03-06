@@ -1,24 +1,37 @@
 "use strict";
 let menu = document.querySelector(".menu");
-let XMLHttp = document.querySelector("#XMLHttpRequest");
+let dataFromServer = document.querySelector("#dataFromServer");
 let btnSend = document.querySelector("#sendRequest");
+let btnFetch = document.querySelector("#sendFetch");
 let btnReset = document.querySelector("#reset");
+let btnForm = document.querySelector("#localStorage");
+let btnSave = document.querySelector("#saveLocalStorage");
+let formLocalStorage = document.querySelector("#formLocalStorage");
+
+let urlUsers = "https://jsonplaceholder.typicode.com/users";
+let urlPosts = "https://jsonplaceholder.typicode.com/posts";
+let urlComments = "https://jsonplaceholder.typicode.com/comments";
+
+btnFetch.addEventListener("click", () => {
+  clearAll(dataFromServer);
+  fetch(urlUsers)
+    .then(response => response.json())
+    .then(response => createUsers(response))
+    .then(() => fetch(urlPosts))
+    .then(response => response.json())
+    .then(response => createPosts(response))
+    .then(() => fetch(urlComments))
+    .then(response => response.json())
+    .then(response => createComments(response));
+});
 
 btnReset.addEventListener("click", () => {
-  while (XMLHttp.firstChild) {
-    XMLHttp.firstChild.remove();
-  }
+  clearAll(dataFromServer);
 });
 
 btnSend.addEventListener("click", () => {
-  xhr("GET", "https://jsonplaceholder.typicode.com/users", usersLoad);
-
-  xhr("GET", "https://jsonplaceholder.typicode.com/posts", postsLoad);
-
-  setTimeout(
-    xhr("GET", "https://jsonplaceholder.typicode.com/comments", commentsLoad),
-    1000
-  );
+  clearAll(dataFromServer);
+  xhr("GET", urlUsers).then(res => usersLoad(res));
 });
 
 menu.addEventListener("click", event => {
@@ -43,77 +56,106 @@ menu.addEventListener("click", event => {
   }
 });
 
-function xhr(method, url, onload, body = null) {
-  let xhr = new XMLHttpRequest();
+btnForm.addEventListener("click", () => {
+  formLocalStorage.classList.toggle("open");
+});
 
-  xhr.open(method, url);
-  xhr.send();
+btnSave.addEventListener("click", ev => {
+  ev.preventDefault();
+  let myForm = document.forms.formLocalStorage;
+});
 
-  xhr.responseType = "json";
+function xhr(method, url) {
+  return new Promise((resolve, reject) => {
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url);
 
-  xhr.onload = onload;
-
-  xhr.onprogress = function(event) {
-    if (event.lenghtComputable) {
-      console.log(`Loaded ${event.loaded} from ${event.total} byte`);
-    } else {
-      console.log(`Loaded ${event.loaded} byte`);
-    }
-  };
-
-  xhr.onerror = () => {
-    console.log("Error");
-  };
+    xhr.responseType = "json";
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send();
+    console.log(xhr);
+    xhr.onload = () => resolve(xhr);
+    xhr.oneerror = reject;
+  });
 }
 
-function usersLoad() {
-  if (this.status != 200) {
-    console.log(`Error ${this.status}: ${this.statusText}`);
+function usersLoad(xhrObj = {}) {
+  console.log(xhrObj);
+
+  if (xhrObj.status !== 200) {
+    console.log(`Error ${xhrObj.status}: ${xhrObj.statusText}`);
   } else {
-    console.log(`Done, load ${this.response.length} elements`);
-    this.response.forEach(element => {
-      let li = document.createElement("li");
-      let ul = document.createElement("ul");
-      ul.classList.add("submenu");
-      li.setAttribute("data-id", element.id);
-      li.innerText = `${element.name} `;
-      li.classList.add("menu__item");
-      li.append(ul);
-      XMLHttp.append(li);
-    });
+    console.log(`Done, load ${xhrObj.response.length} elements`);
+    createUsers(xhrObj.response);
+
+    xhr("GET", urlPosts)
+      .then(res => postsLoad(res))
+      .then(() => console.log("PROMISE ETO TEMA"));
   }
 }
 
-function postsLoad() {
-  if (this.status != 200) {
-    console.log(`Error ${this.status}: ${this.statusText}`);
+function postsLoad(xhrObj = {}) {
+  if (xhrObj.status !== 200) {
+    console.log(`Error ${xhrObj.status}: ${xhrObj.statusText}`);
   } else {
-    console.log(`Done, load ${this.response.length} elements`);
-    this.response.forEach(post => {
-      let user = document.querySelector(`[data-id="${post.userId}"]`);
-      let ul = user.querySelector("ul");
-      let li = document.createElement("li");
-      li.setAttribute("data-post-id", post.id);
-      li.innerText = post.title;
-      ul.append(li);
-      let ulPost = document.createElement("ul");
-      ulPost.classList.add("submenu");
-      li.append(ulPost);
-    });
+    console.log(`Done, load ${xhrObj.response.length} elements`);
+    createPosts(xhrObj.response);
+
+    xhr("GET", urlComments).then(res => commentsLoad(res));
   }
 }
 
-function commentsLoad() {
-  if (this.status != 200) {
-    console.log(`Error ${this.status}: ${this.statusText}`);
+function commentsLoad(xhrObj = {}) {
+  if (xhrObj.status !== 200) {
+    console.log(`Error ${xhrObj.status}: ${xhrObj.statusText}`);
   } else {
-    console.log(`Done, load ${this.response.length} elements`);
-    this.response.forEach(comment => {
-      let post = document.querySelector(`[data-post-id="${comment.postId}"]`);
-      let ul = post.querySelector("ul");
-      let li = document.createElement("li");
-      li.innerHTML = `<small><b>${comment.name}</b> / ${comment.body} </small>`;
-      ul.append(li);
-    });
+    console.log(`Done, load ${xhrObj.response.length} elements`);
+    createComments(xhrObj.response);
+  }
+}
+
+function createUsers(response) {
+  console.log(response);
+  response.forEach(user => {
+    let li = document.createElement("li");
+    let ul = document.createElement("ul");
+    ul.classList.add("submenu");
+    li.classList.add("menu__item");
+    li.setAttribute("data-id", user.id);
+    li.innerText = user.name;
+    li.append(ul);
+    dataFromServer.append(li);
+  });
+}
+
+function createPosts(response) {
+  console.log(response);
+  response.forEach(post => {
+    let user = document.querySelector(`[data-id="${post.userId}"]`);
+    let ul = user.querySelector("ul");
+    let li = document.createElement("li");
+    li.setAttribute("data-post-id", post.id);
+    li.innerText = post.title;
+    ul.append(li);
+    let ulPost = document.createElement("ul");
+    ulPost.classList.add("submenu");
+    li.append(ulPost);
+  });
+}
+
+function createComments(response) {
+  console.log(response);
+  response.forEach(comment => {
+    let post = document.querySelector(`[data-post-id="${comment.postId}"]`);
+    let ul = post.querySelector("ul");
+    let li = document.createElement("li");
+    li.innerText = `${comment.name} / ${comment.body}`;
+    ul.append(li);
+  });
+}
+
+function clearAll(data) {
+  while (data.firstChild) {
+    data.firstChild.remove();
   }
 }

@@ -12,3 +12,15 @@
 .submenu.open {
   display: block;
 }
+
+.menu:hover {
+  cursor: pointer;
+}
+
+.form {
+  display:none;
+}
+
+.form.open {
+  display: block;
+}
