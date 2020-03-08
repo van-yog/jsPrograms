@@ -66,17 +66,19 @@ function showLocalStorage() {
   console.log(localStorage);
   if (localStorage.length) {
     for (let i = 0; i < localStorage.length; i++) {
-      let li = document.createElement("li");
-      let key = localStorage.key(i);
-      li.innerText = key;
+      let key = localStorage.key(i);g
+      if (localStorage[key] === "done" || localStorage[key] === "needToDo") {
+        let li = document.createElement("li");
+        li.innerText = key;
 
-      addManagerButtons(li);
+        addManagerButtons(li);
 
-      if (localStorage[key] == "done") {
-        li.classList.add("done");
+        if (localStorage[key] === "done") {
+          li.classList.add("done");
+        }
+
+        toDoList.append(li);
       }
-
-      toDoList.append(li);
     }
   }
 }
