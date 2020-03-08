@@ -4,9 +4,6 @@ let dataFromServer = document.querySelector("#dataFromServer");
 let btnSend = document.querySelector("#sendRequest");
 let btnFetch = document.querySelector("#sendFetch");
 let btnReset = document.querySelector("#reset");
-let btnForm = document.querySelector("#localStorage");
-let btnSave = document.querySelector("#saveLocalStorage");
-let formLocalStorage = document.querySelector("#formLocalStorage");
 
 let urlUsers = "https://jsonplaceholder.typicode.com/users";
 let urlPosts = "https://jsonplaceholder.typicode.com/posts";
@@ -56,14 +53,7 @@ menu.addEventListener("click", event => {
   }
 });
 
-btnForm.addEventListener("click", () => {
-  formLocalStorage.classList.toggle("open");
-});
 
-btnSave.addEventListener("click", ev => {
-  ev.preventDefault();
-  let myForm = document.forms.formLocalStorage;
-});
 
 function xhr(method, url) {
   return new Promise((resolve, reject) => {
@@ -79,14 +69,14 @@ function xhr(method, url) {
   });
 }
 
-function usersLoad(xhrObj = {}) {
-  console.log(xhrObj);
+function usersLoad(res = {}) {
+  console.log(res);
 
-  if (xhrObj.status !== 200) {
-    console.log(`Error ${xhrObj.status}: ${xhrObj.statusText}`);
+  if (res.status !== 200) {
+    console.log(`Error ${res.status}: ${res.statusText}`);
   } else {
-    console.log(`Done, load ${xhrObj.response.length} elements`);
-    createUsers(xhrObj.response);
+    console.log(`Done, load ${res.response.length} elements`);
+    createUsers(res.response);
 
     xhr("GET", urlPosts)
       .then(res => postsLoad(res))
@@ -94,23 +84,23 @@ function usersLoad(xhrObj = {}) {
   }
 }
 
-function postsLoad(xhrObj = {}) {
-  if (xhrObj.status !== 200) {
-    console.log(`Error ${xhrObj.status}: ${xhrObj.statusText}`);
+function postsLoad(res = {}) {
+  if (res.status !== 200) {
+    console.log(`Error ${res.status}: ${res.statusText}`);
   } else {
-    console.log(`Done, load ${xhrObj.response.length} elements`);
-    createPosts(xhrObj.response);
+    console.log(`Done, load ${res.response.length} elements`);
+    createPosts(res.response);
 
     xhr("GET", urlComments).then(res => commentsLoad(res));
   }
 }
 
-function commentsLoad(xhrObj = {}) {
-  if (xhrObj.status !== 200) {
-    console.log(`Error ${xhrObj.status}: ${xhrObj.statusText}`);
+function commentsLoad(res = {}) {
+  if (res.status !== 200) {
+    console.log(`Error ${res.status}: ${res.statusText}`);
   } else {
-    console.log(`Done, load ${xhrObj.response.length} elements`);
-    createComments(xhrObj.response);
+    console.log(`Done, load ${res.response.length} elements`);
+    createComments(res.response);
   }
 }
 

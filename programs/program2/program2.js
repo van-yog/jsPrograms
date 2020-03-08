@@ -8,7 +8,7 @@ let FavoriteFilm = {
   filmRate: 5
 };
 
-// Elements for Show and Hide blocks
+// Elements for Show and Hide blocks 
 let elem = document.getElementById("editFavoriteFilm");
 let elem2 = document.getElementById("yourFilm");
 

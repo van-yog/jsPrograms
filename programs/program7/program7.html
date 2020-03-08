@@ -115,37 +115,30 @@
                 <!-- Main content -->
                 <div class="col-12 col-md-6 mb-5">
                     <p> Program to work with XMLHttpRequest</p>
-                    <button type="button" id="sendRequest" class="btn btn-primary mb-2">Send XMLHttpRequest</button>
-                    <button type="button" id="sendFetch" class="btn btn-primary mb-2">Send Fetch</button>
-                    <button type="button" id="reset" class="btn btn-secondary mb-2">Reset</button>
-                    <button type="button" id="localStorage" class="btn btn-success mb-2">Form</button>
+                    <button type="button" id="sendRequest" class="btn btn-primary mb-2">XMLHttpRequest</button>
+                    <button type="button" id="sendFetch" class="btn btn-primary mb-2">Fetch</button>
+                    <button type="button" id="reset" class="btn btn-primary mb-2">Reset</button>
+                    <button type="button" id="btnForm" class="btn btn-success mb-2">Open toDo</button>
                     <ul id="dataFromServer" class="menu"></ul>
-                    <form id="formLocalStorage" class="form">
-                        <div class="row mb-2">
-                            <div class="col">
-                                <label>
-                                    First name
-                                    <input type="text" class="form-control">
-                                </label>
-                            </div>
-                            <div class="col">
 
-                                <label>
-                                    Second name
-                                    <input type="text" class="form-control">
-                                </label>
-
-
+                    <div id="toDo" class="toDo">
+                        <form id="formToDo">
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <label>
+                                        What you need to do?
+                                        <input type="text" name="task" class="form-control" placeholder="enter task">
+                                    </label>
+                                    <button type="button" name="addToDo" class="btn btn-success mb-2">add</button>
+                                    <button type="button" name="clearTasks" class="btn btn-success mb-2">delete
+                                        tasks</button>
+                                    <button type="button" name="markTasks" class="btn btn-success mb-2">all
+                                        done</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" id="saveLocalStorage" class="btn btn-success mb-2">Save</button>
-                                <button type="submit" id="clearLocalStorage" class="btn btn-success mb-2">Clear</button>
-                            </div>
-                        </div>
-                    </form>
-                    <div id="dataLocalStorage"></div>
+                        </form>
+                        <ul id="toDoList" class="list-unstyled"></ul>
+                    </div>
                 </div>
                 <!-- Right block with more information -->
                 <div class="col-12 col-md-3 mt-5 mt-md-0">
@@ -164,7 +157,7 @@
                         <li class="list-group-item">
                             JavaScript <br>
                             <span class="small text-mutted">
-                                XMLHttpRequest
+                                XMLHttpRequest, Fetch, localStorage
                             </span>
                         </li>
                         <li class="list-group-item">
@@ -177,8 +170,8 @@
 
 
         <script src="./program7.js">
-
         </script>
+        <script src="./toDo.js"></script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
