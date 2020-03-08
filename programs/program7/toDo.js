@@ -66,7 +66,9 @@ function showLocalStorage() {
   console.log(localStorage);
   if (localStorage.length) {
     for (let i = 0; i < localStorage.length; i++) {
-      let key = localStorage.key(i);g
+      let key = localStorage.key(i);
+
+      // in localStorage can be data not from our toDo app, so we are check it
       if (localStorage[key] === "done" || localStorage[key] === "needToDo") {
         let li = document.createElement("li");
         li.innerText = key;
@@ -86,7 +88,17 @@ function showLocalStorage() {
 function clear() {
   console.log("clear");
 
-  localStorage.clear();
+  // in localStorage can be data not from our toDo app,
+  // so we delete only data from toDo app
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let isToDo = localStorage[key];
+    if (isToDo === "done" || isToDo === "needToDo") {
+      console.log("Mi ydalyaem: " + key + "   " + localStorage[key]);
+      localStorage.removeItem(key);
+      i = -1;
+    }
+  }
 
   while (toDoList.firstChild) {
     toDoList.firstChild.remove();
@@ -97,9 +109,14 @@ function clear() {
 
 function allDone() {
   console.log("allDone");
+  let key;
+  let isToDo;
   for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    localStorage[key] = "done";
+    key = localStorage.key(i);
+    isToDo = localStorage[key];
+    if (isToDo === "needToDo") {
+      localStorage[key] = "done";
+    }
   }
   let allLi = toDoList.querySelectorAll("li");
 
