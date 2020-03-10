@@ -152,11 +152,11 @@ function workWithTasks(ev) {
 
 function addManagerButtons(li) {
   let doneImg = document.createElement("img");
-  doneImg.setAttribute("src", "./done.png");
+  doneImg.setAttribute("src", "./src/done.png");
   doneImg.setAttribute("name", "done");
 
   let deleteImg = document.createElement("img");
-  deleteImg.setAttribute("src", "./delete.png");
+  deleteImg.setAttribute("src", "./src/delete.png");
   deleteImg.setAttribute("name", "delete");
 
   let btnDel = document.createElement("button");
