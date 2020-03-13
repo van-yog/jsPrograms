@@ -131,7 +131,22 @@
                                             tasks</button>
                                         <button type="button" name="markTasks" class="btn btn-success mb-2">all
                                             done</button>
+
+                                        <label class="block" for="filter">
+                                            <small>filter</small>
+                                        </label>
+                                        <select name="filter" id="filter">
+                                            <option value="showAll">all</option>
+                                            <option value="showDone">done</option>
+                                            <option value="showNeedToDo">need to do</option>
+                                        </select>
+                                        <button type="button" name="useFilter" id="useFilter"
+                                            class="btn btn-success mb-2">Use
+                                            filter</button>
                                     </div>
+                                </div>
+                                <div class="row">
+
                                 </div>
                             </form>
                             <ul id="toDoList" class="list-unstyled"></ul>

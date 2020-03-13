@@ -4,6 +4,7 @@ let toDo = document.querySelector("#toDo");
 let toDoList = document.querySelector("#toDoList");
 let btnForm = document.querySelector("#btnForm");
 let formToDo = document.querySelector("#formToDo");
+let btnUseFilter = document.querySelector("#useFilter");
 
 let task = document.forms.formToDo.task;
 let addToDo = document.forms.formToDo.addToDo;
@@ -38,7 +39,34 @@ markTasks.addEventListener("click", allDone);
 
 toDoList.addEventListener("click", ev => workWithTasks(ev));
 
+btnUseFilter.addEventListener("click", showFilteredTasks);
+
+function showFilteredTasks() {
+  let filter = document.querySelector("#filter").value;
+  let task = document.querySelectorAll(".hide");
+
+  let done = "showDone";
+  let needToDo = "showNeedToDo";
+
+  task.forEach(el => el.classList.remove("hide"));
+
+  if (filter === done) {
+    let list = document.querySelectorAll(".listStyle");
+
+    list.forEach(el => {
+      if (!el.classList.contains("done")) {
+        el.classList.add("hide");
+      }
+    });
+  } else if (filter === needToDo) {
+    let needToDo = document.querySelectorAll(".done");
+
+    needToDo.forEach(el => el.classList.add("hide"));
+  }
+}
+
 function createTask() {
+  console.dir(filter);
   let key = task.value;
   if (key === "") {
     console.log("Enter data");
@@ -54,10 +82,13 @@ function createTask() {
 function addNewTask(task) {
   localStorage.setItem(task, "needToDo");
 
+  let filter = document.querySelector("#filter").value;
   let li = document.createElement("li");
   li.innerText = task;
 
   addManagerButtons(li);
+
+  if (filter === "showDone") li.classList.add("hide");
 
   toDoList.append(li);
 }

@@ -45,3 +45,7 @@
 .listStyle {
   border-bottom: 1px dotted rgba(128, 128, 128, 0.349);
 }
+
+.hide {
+  display: none;
+}
