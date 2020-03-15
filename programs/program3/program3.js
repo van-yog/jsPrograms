@@ -5,34 +5,39 @@ let colorShape = document.querySelector("#color");
 
 windowGame.addEventListener("click", changePosition);
 shape.addEventListener("mousemove", runFromMouse);
-colorShape.addEventListener("change", () => {
-  shape.style.backgroundColor = colorShape.value;
-});
+colorShape.addEventListener(
+  "change",
+  () => (shape.style.backgroundColor = colorShape.value)
+);
 
 function runFromMouse(e) {
   if (checkbox.checked) {
-    console.dir(checkbox);
     console.log("runFromMouse");
     let x = e.offsetX ? e.layerX : e.offsetX;
     let y = e.offsetY ? e.layerY : e.offsetY;
+
     let gameField = windowGame.getBoundingClientRect();
     let spanField = e.target.getBoundingClientRect();
+
     let centerX = spanField.left - gameField.left + 25;
     let centerY = spanField.top - gameField.top + 25;
+
     let pointX = spanField.left - gameField.left + x;
     let pointY = spanField.top - gameField.top + y;
+
     if (pointX > centerX) {
       centerX -= pointX + 25 - centerX;
     } else {
       centerX += centerX + 25 - pointX;
     }
+
     if (pointY > centerY) {
       centerY -= pointY + 25 - centerY;
     } else {
       centerY += centerY + 25 - pointY;
     }
 
-    //  Проверка выходет ли круг за границы игрового поля
+    //  Проверка выходит ли круг за границы игрового поля
     //  Очередность проверки  - левый край, верх, правый край, низ
     if (centerX < 30) {
       centerX = 30;
@@ -55,6 +60,7 @@ function changePosition(e) {
   if (!checkbox.checked) {
     let x = e.offsetX ? e.layerX : e.offsetX;
     let y = e.offsetY ? e.layerY : e.offsetY;
+    
     let gameField = windowGame.getBoundingClientRect();
     let spanField = e.target.getBoundingClientRect();
 
