@@ -12,7 +12,7 @@
         <link rel="icon" href="../../src/icon/js.png" type="image/x-icon">
         <title>My JS experience</title>
         <style>
-            #editFavoriteFilm {
+            #editFilm {
                 display: none;
             }
         </style>
@@ -86,9 +86,7 @@
                                     Programs</span>
                             </li>
                             <li class="list-group-item">
-                                <a href="../program1/program1.html">
-                                    1 - Change Text
-                                </a>
+                                <a href="../program1/program1.html">1 - Change Text</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="../program2/program2.html">2 - FavoriteFilm</a>
@@ -134,27 +132,27 @@
                             </button>
                         </div>
                         <div id="yourFilm"></div>
-                        <div id="editFavoriteFilm">
+                        <div id="editFilm">
                             <div class="p-3 border">
-                                <form name="form__film">
+                                <form name="formFilm">
                                     <div class="form-group row">
-                                        <label for="filmName" class="col-sm-3 col-form-label">Name of Film</label>
+                                        <label for="name" class="col-sm-3 col-form-label">Name of Film</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="filmName"
+                                            <input type="text" class="form-control" id="name"
                                                 placeholder="Lord Of The Rings">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="filmDirector" class="col-sm-3 col-form-label">Director </label>
+                                        <label for="director" class="col-sm-3 col-form-label">Director </label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="filmDirector"
+                                            <input type="text" class="form-control" id="director"
                                                 placeholder="Name of Director">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="filmYear" class="col-sm-3 col-form-label">Year of the film </label>
+                                        <label for="year" class="col-sm-3 col-form-label">Year of the film </label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="filmYear" placeholder="2001">
+                                            <input type="text" class="form-control" id="year" placeholder="2001">
                                         </div>
                                     </div>
                                     <fieldset class="form-group">
@@ -163,15 +161,15 @@
                                             <div class="col-sm-9">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="gridRadios"
-                                                        id="filmOscarYes" value="Yes" checked>
-                                                    <label class="form-check-label" for="filmOscarYes">
+                                                        id="oscarYes" value="Yes" checked>
+                                                    <label class="form-check-label" for="oscarYes">
                                                         Yes
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="gridRadios"
-                                                        id="filmOscarNo" value="No">
-                                                    <label class="form-check-label" for="filmOscarNo">
+                                                        id="oscarNo" value="No">
+                                                    <label class="form-check-label" for="oscarNo">
                                                         No
                                                     </label>
                                                 </div>
@@ -179,8 +177,8 @@
                                         </div>
                                     </fieldset>
                                     <div class="form-group row">
-                                        <label for="filmRate" class="col-sm-3 col-form-label">Rating</label>
-                                        <select class="custom-select col-10 col-sm-5 ml-3" id="filmRate">
+                                        <label for="rate" class="col-sm-3 col-form-label">Rating</label>
+                                        <select class="custom-select col-10 col-sm-5 ml-3" id="rate">
                                             <option selected>Rate...</option>
                                             <option value="1">1 star</option>
                                             <option value="2">2 stars</option>
@@ -204,7 +202,7 @@
                 </div>
                 <!-- Right block with more information -->
                 <div class="col-12 col-md-3 mt-5 mt-md-0">
-                    <asid>
+                    <aside>
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <span class="font-weight-bold">
@@ -212,25 +210,25 @@
                                 </span>
                             </li>
                             <li class="list-group-item">
-                                Html <br>
+                                HTML5 <br>
                                 <span class="small text-mutted">
-                                    forms, button
+                                    forms, buttons
                                 </span>
                             </li>
                             <li class="list-group-item">
                                 JavaScript <br>
                                 <span class="small text-mutted">
-                                    object, functions, getElementById, work with CSS
+                                    object, functions, getElementById,
                                 </span>
                             </li>
                             <li class="list-group-item">
-                                Bootstrap-4 <br>
+                                Bootstrap <br>
                                 <span class="small text-mutted">
                                     navbar, d-none, list-group, btn
                                 </span>
                             </li>
                         </ul>
-                    </asid>
+                    </aside>
                 </div>
             </div>
         </div>

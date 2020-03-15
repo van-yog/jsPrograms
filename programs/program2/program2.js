@@ -1,15 +1,15 @@
 "use strict";
 
-let FavoriteFilm = {
-  filmName: "Lord Of The Ring",
-  filmDirector: "Piter Jackson",
-  filmYear: 2001,
-  filmOscar: true,
-  filmRate: 5
+let film = {
+  name: "Lord Of The Ring",
+  director: "Piter Jackson",
+  year: 2001,
+  oscar: true,
+  rate: 5
 };
 
-// Elements for Show and Hide blocks 
-let elem = document.getElementById("editFavoriteFilm");
+// Elements for Show and Hide blocks
+let elem = document.getElementById("editFilm");
 let elem2 = document.getElementById("yourFilm");
 
 function editFavoriteFilm() {
@@ -18,17 +18,16 @@ function editFavoriteFilm() {
 }
 
 function saveFavoriteFilm() {
-  FavoriteFilm.filmName = document.form__film.filmName.value;
-  FavoriteFilm.filmDirector = document.form__film.filmDirector.value;
-  FavoriteFilm.filmYear = document.form__film.filmYear.value;
+  let form = document.formFilm;
 
-  if (document.form__film.filmOscarYes.checked === true) {
-    FavoriteFilm.filmOscar = true;
-  } else {
-    FavoriteFilm.filmOscar = false;
-  }
+  film.name = form.name.value;
+  film.director = form.director.value;
+  film.year = form.year.value;
+  film.rate = form.rate.value;
 
-  FavoriteFilm.filmRate = document.form__film.filmRate.value;
+  let hasOscar = form.oscarYes.checked;
+
+  film.oscar = hasOscar ? true : false;
 }
 
 function saveAndShow() {
@@ -52,27 +51,27 @@ function showFavoriteFilm() {
     <tr>
       <th scope="row">1</th>
       <td>Your favorite film is</td>
-      <td class="font-weight-bold">${FavoriteFilm.filmName}</td>
+      <td class="font-weight-bold">${film.name}</td>
     </tr>
     <tr>
       <th scope="row">2</th>
       <td>Director</td>
-      <td class="font-weight-bold">${FavoriteFilm.filmDirector}</td>
+      <td class="font-weight-bold">${film.director}</td>
     </tr>
     <tr>
       <th scope="row">3</th>
       <td>Year of the film</td>
-      <td class="font-weight-bold">${FavoriteFilm.filmYear}</td>
+      <td class="font-weight-bold">${film.year}</td>
     </tr>
     <tr>
       <th scope="row">4</th>
       <td>Oscars</td>
-      <td class="font-weight-bold">${FavoriteFilm.filmOscar}</td>
+      <td class="font-weight-bold">${film.oscar}</td>
     </tr>
     <tr>
       <th scope="row">5</th>
       <td>Rate of film max 5</td>
-      <td class="font-weight-bold">${FavoriteFilm.filmRate}</td>
+      <td class="font-weight-bold">${film.rate}</td>
     </tr>
   </tbody>
 </table>`;
