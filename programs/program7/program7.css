@@ -16,36 +16,3 @@
 .menu:hover {
   cursor: pointer;
 }
-
-.toDo {
-  display: none;
-}
-
-.toDo.open {
-  display: block;
-}
-
-.done {
-  text-decoration: line-through;
-  font-size: smaller;
-  opacity: 0.5;
-  transition: all 0.3s ease-in-out;
-}
-
-.editForm {
-  display: none;
-}
-
-.editForm.open {
-  text-decoration: none;
-  display: block;
-  transition: all 0.3s ease-in-out;
-}
-
-.listStyle {
-  border-bottom: 1px dotted rgba(128, 128, 128, 0.349);
-}
-
-.hide {
-  display: none;
-}

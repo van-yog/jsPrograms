@@ -53,8 +53,6 @@ menu.addEventListener("click", event => {
   }
 });
 
-
-
 function xhr(method, url) {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
@@ -109,10 +107,12 @@ function createUsers(response) {
   response.forEach(user => {
     let li = document.createElement("li");
     let ul = document.createElement("ul");
+
     ul.classList.add("submenu");
     li.classList.add("menu__item");
     li.setAttribute("data-id", user.id);
     li.innerText = user.name;
+
     li.append(ul);
     dataFromServer.append(li);
   });
