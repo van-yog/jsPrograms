@@ -5,7 +5,7 @@ let delay = ONE_SECOND;
 let btnOpen = document.querySelector("#button-open");
 let btnStop = document.querySelector("#button-stop");
 let btnClose = document.querySelector("#button-close");
-let menu = document.querySelector(".menu");
+let menu = document.querySelector(".menu-list");
 let timerId;
 
 // program buttons for work with menu ( list )
@@ -21,7 +21,8 @@ btnOpen.addEventListener("click", () => {
     timerId = setTimeout(openMenu, delay, submenu);
   } else {
     btnOpen.innerHTML = "Open";
-    closeOpenItems(menu.querySelectorAll(".open"));
+    let openMenu = menu.querySelectorAll(".open");
+    closeOpenItems(openMenu);
   }
 });
 
@@ -48,7 +49,7 @@ menu.addEventListener("click", event => {
   let className = submenu.parentElement.classList.value;
 
   // Check first item of menu, click on this item must close all submenu
-  if (className === "menu__item") {
+  if (className === "menu") {
     for (let i = 0; i < closeAll.length; i++) {
       if (submenu === closeAll[i]) {
         continue;

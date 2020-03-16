@@ -119,30 +119,43 @@
                 <!-- Main content -->
                 <div class="col-12 col-md-6 mb-5">
                     <main>
+                        <p>Push blue button "Open" to start auto opening menu.</p>
+                        <p>Auto mode of opening the menu - it should open with a delay of 1 second. Each subsequent
+                            submenu should also open
+                            with a delay of 1 second, until it reaches the last nesting.
+                        </p>
+                        <p>Manual mode of opening the menu - it should save the history of open nesting. But when you
+                            switch menu should close
+                            history and open new menu.
+
+                        </p>
+                        <p>Close button shoud close all submenus and menus with delay of 1 second.</p>
+                        <p>Button "Stop" end auto opening or auto closing menu</p>
                         <div class="text-center">
                             <button id="button-open" class="btn btn-primary">Open</button>
                             <button id="button-stop" class="btn btn-danger">Stop</button>
                             <button id="button-close" class="btn btn-primary">Close</button>
                         </div>
-                        <ul class="menu ">
-                            <li class="menu__item">item 1
+                        <ul class="menu-list">
+                            <li class="menu">
+                                menu 1
                                 <ul class="submenu">
-                                    <li>item 1
+                                    <li>submenu 1
                                         <ul class="submenu">
-                                            <li>item 1 <ul class="submenu">
-                                                    <li>item 1<ul class="submenu">
+                                            <li>submenu 1 <ul class="submenu">
+                                                    <li>submenu 1<ul class="submenu">
                                                             <li>item 1</li>
                                                             <li>item 2</li>
                                                             <li>item 3</li>
                                                         </ul>
                                                     </li>
-                                                    <li>item 2<ul class="submenu">
+                                                    <li>submenu 2<ul class="submenu">
                                                             <li>item 1</li>
                                                             <li>item 2</li>
                                                             <li>item 3</li>
                                                         </ul>
                                                     </li>
-                                                    <li>item 3<ul class="submenu">
+                                                    <li>submenu 3<ul class="submenu">
                                                             <li>item 1</li>
                                                             <li>item 2</li>
                                                             <li>item 3</li>
@@ -150,13 +163,13 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li>item 2<ul class="submenu">
+                                            <li>submenu 2<ul class="submenu">
                                                     <li>item 1</li>
                                                     <li>item 2</li>
                                                     <li>item 3</li>
                                                 </ul>
                                             </li>
-                                            <li>item 3<ul class="submenu">
+                                            <li>submenu 3<ul class="submenu">
                                                     <li>item 1</li>
                                                     <li>item 2</li>
                                                     <li>item 3</li>
@@ -164,13 +177,13 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>item 2<ul class="submenu">
+                                    <li>submenu 2<ul class="submenu">
                                             <li>item 1</li>
                                             <li>item 2</li>
                                             <li>item 3</li>
                                         </ul>
                                     </li>
-                                    <li>item 3<ul class="submenu">
+                                    <li>submenu 3<ul class="submenu">
                                             <li>item 1</li>
                                             <li>item 2</li>
                                             <li>item 3</li>
@@ -178,9 +191,48 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="menu__item">item 2
+                            <li class="menu">menu 2
                                 <ul class="submenu">
-                                    <li>item 1 <ul class="submenu">
+                                    <li>submenu 1
+                                        <ul class="submenu">
+                                            <li>submenu 1
+                                                <ul class="submenu">
+                                                    <li>item 1</li>
+                                                    <li>item 2</li>
+                                                    <li>item 3</li>
+                                                </ul>
+                                            </li>
+                                            <li>submenu 2<ul class="submenu">
+                                                    <li>item 1</li>
+                                                    <li>item 2</li>
+                                                    <li>item 3</li>
+                                                </ul>
+                                            </li>
+                                            <li>submenu 3<ul class="submenu">
+                                                    <li>item 1</li>
+                                                    <li>item 2</li>
+                                                    <li>item 3</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>submenu 2<ul class="submenu">
+                                            <li>item 1</li>
+                                            <li>item 2</li>
+                                            <li>item 3</li>
+                                        </ul>
+                                    </li>
+                                    <li>submenu 3<ul class="submenu">
+                                            <li>item 1</li>
+                                            <li>item 2</li>
+                                            <li>item 3</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu">menu 3
+                                <ul class="submenu">
+                                    <li>submenu 1 <ul class="submenu">
                                             <li>item 1<ul class="submenu">
                                                     <li>item 1</li>
                                                     <li>item 2</li>
@@ -201,50 +253,13 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>item 2<ul class="submenu">
+                                    <li>submenu 2<ul class="submenu">
                                             <li>item 1</li>
                                             <li>item 2</li>
                                             <li>item 3</li>
                                         </ul>
                                     </li>
-                                    <li>item 3<ul class="submenu">
-                                            <li>item 1</li>
-                                            <li>item 2</li>
-                                            <li>item 3</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu__item">item 3
-                                <ul class="submenu">
-                                    <li>item 1 <ul class="submenu">
-                                            <li>item 1<ul class="submenu">
-                                                    <li>item 1</li>
-                                                    <li>item 2</li>
-                                                    <li>item 3</li>
-                                                </ul>
-                                            </li>
-                                            <li>item 2<ul class="submenu">
-                                                    <li>item 1</li>
-                                                    <li>item 2</li>
-                                                    <li>item 3</li>
-                                                </ul>
-                                            </li>
-                                            <li>item 3<ul class="submenu">
-                                                    <li>item 1</li>
-                                                    <li>item 2</li>
-                                                    <li>item 3</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>item 2<ul class="submenu">
-                                            <li>item 1</li>
-                                            <li>item 2</li>
-                                            <li>item 3</li>
-                                        </ul>
-                                    </li>
-                                    <li>item 3<ul class="submenu">
+                                    <li>submenu 3<ul class="submenu">
                                             <li>item 1</li>
                                             <li>item 2</li>
                                             <li>item 3</li>
@@ -265,7 +280,7 @@
                                 </span>
                             </li>
                             <li class="list-group-item">
-                                Html
+                                HTML5
 
                             </li>
                             <li class="list-group-item">
@@ -277,14 +292,14 @@
                             <li class="list-group-item">
                                 JavaScript <br>
                                 <span class="small text-mutted">
-                                    const, arrow functions, recursion, setTimeout(), querySelector(),
-                                    classList.toggle(),
-                                    classList.contains(),
+                                    const, arrow functions, recursion, setTimeout, querySelector,
+                                    classList.toggle,
+                                    classList.contains,
                                     innerHTML
                                 </span>
                             </li>
                             <li class="list-group-item">
-                                Bootstrap-4 <br>
+                                Bootstrap<br>
                                 <span class="small text-mutted">
                                     navbar, d-none, list-group, btn
                                 </span>

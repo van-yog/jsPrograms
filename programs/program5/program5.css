@@ -1,8 +1,8 @@
-.menu {
+.menu-list {
   display: none;
 }
 
-.menu.open {
+.menu-list.open {
   display: block;
 }
 
