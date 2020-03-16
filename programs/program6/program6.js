@@ -21,13 +21,9 @@ let ticketInfo = document.querySelector("#ticket");
 console.log(ticketInfo);
 
 f.addEventListener("change", () => {
-  // checkFormValidation();
   tempInformation(flight);
-  if (oneWay.checked) {
-    flightReturn.disabled = true;
-  } else {
-    flightReturn.disabled = false;
-  }
+
+  flightReturn.disabled = oneWay.checked ? true : false;
 
   let ticketInfo = document.querySelector(".find-ticket");
   if (ticketInfo) {
