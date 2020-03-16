@@ -61,13 +61,16 @@ function draw() {
     }
 
     if (
-      (xPos + bird.width >= pipe[i].x &&
-        xPos <= pipe[i].x + pipeUp.width &&
-        (yPos <= pipe[i].y + pipeUp.height ||
-          yPos + bird.height >= pipe[i].y + pipeUp.height + gap)) ||
-      yPos + bird.height >= cvs.height - fg.height
+      xPos + bird.width >= pipe[i].x &&
+      xPos <= pipe[i].x + pipeUp.width &&
+      (yPos <= pipe[i].y + pipeUp.height ||
+        yPos + bird.height >= pipe[i].y + pipeUp.height + gap)
     ) {
-      // alert("Crash");
+      alert("Crash");
+      location.reload();
+    }
+    if (yPos + bird.height >= cvs.height - fg.height) {
+      console.log("Проверка на достижения дна");
       location.reload();
     }
 
