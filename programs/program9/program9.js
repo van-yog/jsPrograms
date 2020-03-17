@@ -174,15 +174,15 @@ function workWithTasks(ev) {
     li.remove();
   }
 
-  if (select.localName === "li") {
-    select.classList.toggle("done");
-    key = ev.target.innerText;
+  // if (select.localName === "li") {
+  //   select.classList.toggle("done");
+  //   key = ev.target.innerText;
 
-    localStorage[key] = localStorage[key] === "done" ? "needToDo" : "done";
+  //   localStorage[key] = localStorage[key] === "done" ? "needToDo" : "done";
 
-    if (filter === "showDone") setTimeout(hide, 500, select);
-    if (filter === "showNeedToDo") setTimeout(hide, 500, select);
-  }
+  //   if (filter === "showDone") setTimeout(hide, 500, select);
+  //   if (filter === "showNeedToDo") setTimeout(hide, 500, select);
+  // }
 
   if (select.name === "done") {
     localStorage[key] = li.classList.contains("done") ? "needToDo" : "done";
