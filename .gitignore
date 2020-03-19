@@ -1,2 +1,9 @@
 /node_modules
 /мусор
+/build
+package-lock.json
+
+*.DS_Store
+.idea
+.vscode
+

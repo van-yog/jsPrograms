@@ -86,7 +86,7 @@ function addNewTask(task) {
   let li = document.createElement("li");
   li.innerText = task;
 
-  addManagerButtons(li);
+  addControlButtons(li);
 
   if (filter === "showDone") li.classList.add("hide");
 
@@ -104,7 +104,7 @@ function showLocalStorage() {
         let li = document.createElement("li");
         li.innerText = key;
 
-        addManagerButtons(li);
+        addControlButtons(li);
 
         if (localStorage[key] === "done") {
           li.classList.add("done");
@@ -164,27 +164,21 @@ function allDone() {
 }
 
 function workWithTasks(ev) {
-  let li = ev.path[2];
+  console.log(ev);
+
+  let name = ev.target.name;
+  let li = name === "btnDone" || name === "btnDelete" ? ev.path[1] : ev.path[2];
+
   let key = li.innerText;
-  let select = ev.target;
+
   let filter = document.querySelector("#filter").value;
 
-  if (select.name === "delete") {
+  if (name === "delete" || name === "btnDelete") {
     localStorage.removeItem(key);
     li.remove();
   }
 
-  // if (select.localName === "li") {
-  //   select.classList.toggle("done");
-  //   key = ev.target.innerText;
-
-  //   localStorage[key] = localStorage[key] === "done" ? "needToDo" : "done";
-
-  //   if (filter === "showDone") setTimeout(hide, 500, select);
-  //   if (filter === "showNeedToDo") setTimeout(hide, 500, select);
-  // }
-
-  if (select.name === "done") {
+  if (name === "done" || name === "btnDone") {
     localStorage[key] = li.classList.contains("done") ? "needToDo" : "done";
     li.classList.toggle("done");
 
@@ -199,24 +193,28 @@ function hide(el) {
   el.classList.add("hide");
 }
 
-function addManagerButtons(li) {
+function addControlButtons(li) {
   let doneImg = document.createElement("img");
-  doneImg.setAttribute("src", "./src/done.png");
+  doneImg.setAttribute("src", "./src/img/done.png");
   doneImg.setAttribute("name", "done");
 
   let deleteImg = document.createElement("img");
-  deleteImg.setAttribute("src", "./src/delete.png");
+  deleteImg.setAttribute("src", "./src/img/delete.png");
   deleteImg.setAttribute("name", "delete");
 
   let btnDel = document.createElement("button");
   btnDel.append(deleteImg);
   btnDel.classList.add("btn");
-  btnDel.classList.add("btn-default");
+  btnDel.classList.add("btn-light");
+  btnDel.classList.add("ml-3");
+  btnDel.setAttribute("name", "btnDelete");
 
   let btnEdit = document.createElement("button");
   btnEdit.append(doneImg);
   btnEdit.classList.add("btn");
-  btnEdit.classList.add("btn-default");
+  btnEdit.classList.add("btn-light");
+  btnEdit.classList.add("mr-3");
+  btnEdit.setAttribute("name", "btnDone");
 
   li.classList.add("listStyle");
   li.prepend(btnEdit);
