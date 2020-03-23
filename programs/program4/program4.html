@@ -28,38 +28,38 @@
                     @@include('../../template/programs/desktopNavigation.html')
                 </div>
                 <!-- Main content -->
-                <div class="col-12 col-md-6 mb-5">
+                <div class="col-12 col-md-6 mb-5 border rounded ">
 
                     <form name="data" id="data">
 
-                        <div class="col-4 d-flex flex-column">
-                            <label>
-                                Name
-                            </label>
-                            <input type="text" name="name">
-                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-10 d-flex flex-column">
+                                <label>
+                                    Name
+                                </label>
+                                <input type="text" name="name">
+                            </div>
 
-                        <div class="col-4 d-flex flex-column">
-                            <label>
-                                Surname
-                            </label>
-                            <input type="text" name="surname">
-                        </div>
-                        <div class="col-4 d-flex flex-column mb-2">
-                            <label for="card">
-                                Type
-                            </label>
-                            <select name="type" id="">
-                                <option value="VISA">VISA</option>
-                                <option value="MASTERCARD">MasterCard</option>
-                                <option value="MAESTRO">Maestro</option>
-                                <option value="RANDOM">Random</option>
-                            </select>
+                            <div class="col-md-4 col-10 d-flex flex-column">
+                                <label>
+                                    Surname
+                                </label>
+                                <input type="text" name="surname">
+                            </div>
+                            <div class="col-md-4 col-10 d-flex flex-column mb-2">
+                                <label for="card">
+                                    Type
+                                </label>
+                                <select name="type" id="">
+                                    <option value="VISA">VISA</option>
+                                    <option value="MASTERCARD">MasterCard</option>
+                                    <option value="MAESTRO">Maestro</option>
+                                    <option value="RANDOM">Random</option>
+                                </select>
 
-                        </div>
-                        <div class="col-4">
-                            <button id="btnCard" type="button" class="btn btn-primary">Ganarate</button>
-                            <button id="btnClear" type="button" class="btn btn-primary">Delete all</button>
+                            </div>
+                            <button id="btnCard" type="button" class="btn btn-primary mx-3">Ganarate</button>
+                            <button id="btnClear" type="button" class="btn btn-primary inline">Delete all</button>
                         </div>
                     </form>
 
@@ -82,7 +82,7 @@
                         <li class="list-group-item">
                             JavaScript <br>
                             <span class="small text-mutted">
-                                XMLHttpRequest, Fetch, localStorage
+                                Math.random
                             </span>
                         </li>
                         <li class="list-group-item">
