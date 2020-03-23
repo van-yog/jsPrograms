@@ -8,6 +8,7 @@ let cssmin = require("gulp-cssmin");
 let rename = require("gulp-rename");
 let minify = require("gulp-minify");
 let browserSync = require("browser-sync").create();
+let reload = browserSync.reload;
 
 gulp.task("html", function() {
   return gulp
@@ -37,6 +38,7 @@ gulp.task("css:libs", function() {
   return gulp
     .src("./src/css/*.css")
     .pipe(concat("libs.min.css"))
+    .pipe(cssmin())
     .pipe(gulp.dest("build/src/css"));
 });
 
@@ -88,19 +90,13 @@ gulp.task("webserver", function() {
       ["./index.html", "./history/**/*.html", "./programs/**/*.html"],
       gulp.series("html")
     )
-    .on("change", browserSync.reload);
+    .on("change", reload);
   gulp
     .watch(["./programs/**/*.css", "./history/**/*.css"], gulp.series("css"))
-    .on("change", browserSync.reload);
-  gulp
-    .watch("./programs/**/*.js", gulp.series("js"))
-    .on("change", browserSync.reload);
-  gulp
-    .watch("./src/js/*.js", gulp.series("js:libs"))
-    .on("change", browserSync.reload);
-  gulp
-    .watch("./src/css/*.css", gulp.series("css:libs"))
-    .on("change", browserSync.reload);
+    .on("change", reload);
+  gulp.watch("./programs/**/*.js", gulp.series("js")).on("change", reload);
+  gulp.watch("./src/js/*.js", gulp.series("js:libs")).on("change", reload);
+  gulp.watch("./src/css/*.css", gulp.series("css:libs")).on("change", reload);
   gulp
     .watch(
       [

@@ -21,8 +21,15 @@ let blockUp = new Image();
 let blockDown = new Image();
 let life = new Image();
 let block = [];
+
 let saturn = new Image();
-let planet = [];
+let earth = new Image();
+let moon = new Image();
+let star = new Image();
+let asteroid = new Image();
+
+let planet = {};
+let planet1 = {};
 // sound
 let fly = new Audio();
 let scoreAudio = new Audio();
@@ -143,7 +150,7 @@ function checkScore() {
 function drawGameField() {
   ctx.drawImage(bgSpace, 0, 0);
 
-  // let start = block.length > 2 ? block.length - 2 : 0;
+  drawPlanets();
 
   for (let i = 0; i < block.length; i++) {
     replaceBlock(i);
@@ -158,18 +165,36 @@ function drawGameField() {
 
     if (x + blockUp.width <= 0) block[i].isVisible = false;
   }
+
   ctx.drawImage(spaceShip, player.x, player.y);
   ctx.drawImage(crashLine, 0, cvs.height - crashLine.height);
 
   player.y += player.gravitation;
 }
 
-function replaceBlock(i) {
-  let x1 = planet[i].x;
-  let y1 = planet[i].y;
-  ctx.drawImage(saturn, x1, y1);
-  planet[i].x--;
+function drawPlanets() {
+  if (planet.x > -60) {
+    ctx.drawImage(planet.name, planet.x--, planet.y);
+  } else {
+    planet.y = Math.floor(Math.random() * (cvs.height - crashLine.height));
+    planet.x = 375 + Math.round((Math.random() * cvs.width) / 2);
+    let chanchePlanet = Math.round(Math.random() * 4);
+    console.log(chanchePlanet);
+    planet.name = planet.arr[chanchePlanet];
+  }
 
+  if (planet1.x > -60) {
+    ctx.drawImage(planet1.name, planet1.x--, planet1.y);
+  } else {
+    planet1.y = Math.floor(Math.random() * (cvs.height - crashLine.height));
+    planet1.x = 375 + Math.round((Math.random() * cvs.width) / 2);
+    let chanchePlanet = Math.round(Math.random() * 4);
+    console.log(chanchePlanet);
+    planet1.name = planet1.arr[chanchePlanet];
+  }
+}
+
+function replaceBlock(i) {
   let x = block[i].x;
   let y = block[i].y;
   let yBottom = block[i].y + blockUp.height + interval;
@@ -187,13 +212,11 @@ function createNewBlock() {
     isVisible: true
   });
 
-  planet.push({
-    x: cvs.width + Math.floor(Math.random() * cvs.width),
-    y: Math.floor(Math.random() * cvs.height)
-  });
-
   //increase speed before every 4 blocks
-  if (!(block.length % 4)) speed++;
+  if (block.length == 3) speed++;
+  if (block.length == 8) speed++;
+  if (block.length == 12) speed++;
+  if (block.length == 16) speed++;
 }
 
 function birdCrash(i) {
@@ -267,6 +290,22 @@ function setStartProperties() {
   blockDown.src = "./src/img/blockDown.png";
   life.src = "./src/img/life.png";
   saturn.src = "./src/img/saturn.png";
+  earth.src = "./src/img/earth.png";
+  moon.src = "./src/img/moon.png";
+  star.src = "./src/img/star.png";
+  asteroid.src = "./src/img/asteroid.png";
+
+  planet.arr = [saturn, earth, moon, star, asteroid];
+  planet.x = 375 + Math.round((Math.random() * cvs.width) / 2);
+  planet.y = Math.round(Math.random() * (cvs.height - crashLine.height));
+  let random = Math.round(Math.random() * 4);
+  planet.name = planet.arr[random];
+
+  planet1.arr = [saturn, earth, moon, star, asteroid];
+  planet1.x = 450 + Math.round((Math.random() * cvs.width) / 2);
+  planet1.y = Math.round(Math.random() * (cvs.height - crashLine.height));
+  random = Math.round(Math.random() * 4);
+  planet1.name = planet1.arr[random];
 
   createNewBlock();
 
