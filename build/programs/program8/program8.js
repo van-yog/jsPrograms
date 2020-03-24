@@ -29,6 +29,8 @@ let moon = new Image();
 let star = new Image();
 let asteroid = new Image();
 
+let imagesLoad = 0;
+
 let planet = [];
 let allPlanets = [saturn, earth, moon, star, asteroid];
 // sound

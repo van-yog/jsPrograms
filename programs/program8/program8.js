@@ -13,6 +13,7 @@ let player = {};
 let interval;
 let speed;
 let scoreGame;
+let counter = 0;
 // img
 let spaceShip = new Image();
 let bgSpace = new Image();
@@ -28,14 +29,17 @@ let moon = new Image();
 let star = new Image();
 let asteroid = new Image();
 
-let planet = {};
-let planet1 = {};
+let imagesLoad = 0;
+
+let planet = [];
+let allPlanets = [saturn, earth, moon, star, asteroid];
 // sound
 let fly = new Audio();
 let scoreAudio = new Audio();
 let gameOver = new Audio();
 let congratulations = new Audio();
 let backgroundMusic = new Audio();
+let beepStart = new Audio();
 
 setStartProperties();
 
@@ -53,63 +57,30 @@ btnStartStop.addEventListener("click", () => {
 btnNewGame.addEventListener("click", newGame);
 
 cvs.addEventListener("click", moveUp);
-document.body.addEventListener("keypress", ev => {
-  if (!isPause) {
-    if (ev.key === "d") player.x += 5;
-    if (ev.key === "a") player.x -= 5;
-    if (ev.key === "s") player.y += 5;
-    if (ev.key === "w") {
-      player.y -= 15;
-      fly.play();
-    }
-    checkBorders();
-  }
-});
-function checkBorders() {
-  if (player.x + spaceShip.width >= cvs.width)
-    player.x = cvs.width - spaceShip.width;
-  if (player.x <= 0) player.x = 0;
-  if (player.y <= 0) player.y = 0;
-}
+document.body.addEventListener("keypress", ev => movePlayer(ev));
 
 function newGame() {
   localStorage.setItem("lifes", 3);
-  localStorage.setItem("score", 0);
   localStorage.setItem("sumScore", "0");
   isPause = true;
-
-  startPosition();
-
-  startGame();
-}
-
-function startPosition() {
-  drawLifes();
-  drawStatistic();
-
-  player = {
-    x: 10,
-    y: 150,
-    gravitation: 1
-  };
-
-  btnStartStop.innerText = "Play";
-
   location.reload();
 }
 
-function drawLifes() {
+function drawStatistic() {
+  // draw foreground
+  ctx.drawImage(crashLine, 0, cvs.height - crashLine.height);
+
+  // draw lifes
   let xlife = 10;
   let ylife = cvs.height - 50;
-  let lifes = localStorage.getItem("lifes");
+  let lifes = Number(localStorage.getItem("lifes"));
 
   for (let i = 0; i < lifes; i++) {
     ctx.drawImage(life, xlife, ylife);
     xlife += 50;
   }
-}
 
-function drawStatistic() {
+  // draw score, record
   let sumScore = Number(localStorage.getItem("sumScore"));
   let record = Number(localStorage.getItem("record"));
 
@@ -121,10 +92,15 @@ function drawStatistic() {
 }
 
 function startGame() {
-  drawGameField();
-  drawLifes();
-  checkScore();
+  if (!counter) beepStart.play();
+
+  drawBackground();
+  drawPlanets();
+  checkCrash();
+  drawBlocks();
+  drawPlayer();
   drawStatistic();
+
   if (isPause) return;
 
   backgroundMusic.play();
@@ -132,138 +108,124 @@ function startGame() {
   requestAnimationFrame(startGame);
 }
 
-function checkScore() {
-  let score = 0;
-
-  for (let i = 0; i < block.length; i++) {
-    if (!block[i].isVisible) score++;
-  }
-
-  if (score >= scoreGame + 1) {
-    scoreGame++;
-    let b = Number(localStorage.getItem("sumScore")) + 1;
-    localStorage.setItem("sumScore", b);
-    scoreAudio.play();
-  }
+function drawPlayer() {
+  ctx.drawImage(spaceShip, player.x, player.y++);
 }
 
-function drawGameField() {
+function drawBackground() {
   ctx.drawImage(bgSpace, 0, 0);
-
-  drawPlanets();
-
-  for (let i = 0; i < block.length; i++) {
-    replaceBlock(i);
-    if (birdCrash(i)) {
-      ctx.drawImage(crashLine, 0, cvs.height - crashLine.height);
-      drawLifes();
-      drawStatistic();
-      return startPosition();
-    }
-    let x = block[i].x;
-    if (x == 75) createNewBlock();
-
-    if (x + blockUp.width <= 0) block[i].isVisible = false;
-  }
-
-  ctx.drawImage(spaceShip, player.x, player.y);
-  ctx.drawImage(crashLine, 0, cvs.height - crashLine.height);
-
-  player.y += player.gravitation;
+}
+function newY() {
+  return Math.round(Math.random() * (cvs.height - crashLine.height - 50));
+}
+function newX() {
+  return cvs.width + Math.round(Math.random() * cvs.width);
+}
+function randomNamePlanet() {
+  let i = Math.round(Math.random() * 4);
+  return allPlanets[i];
 }
 
 function drawPlanets() {
-  if (planet.x > -60) {
-    ctx.drawImage(planet.name, planet.x--, planet.y);
-  } else {
-    planet.y = Math.floor(Math.random() * (cvs.height - crashLine.height));
-    planet.x = 375 + Math.round((Math.random() * cvs.width) / 2);
-    let chanchePlanet = Math.round(Math.random() * 4);
-    console.log(chanchePlanet);
-    planet.name = planet.arr[chanchePlanet];
-  }
-
-  if (planet1.x > -60) {
-    ctx.drawImage(planet1.name, planet1.x--, planet1.y);
-  } else {
-    planet1.y = Math.floor(Math.random() * (cvs.height - crashLine.height));
-    planet1.x = 375 + Math.round((Math.random() * cvs.width) / 2);
-    let chanchePlanet = Math.round(Math.random() * 4);
-    console.log(chanchePlanet);
-    planet1.name = planet1.arr[chanchePlanet];
+  counter++;
+  for (let i = 0; i < planet.length; i++) {
+    if (planet[i].x > -60) {
+      if (planet[i].speed == 1 && counter % 2) {
+        ctx.drawImage(planet[i].name, planet[i].x, planet[i].y);
+      } else if (planet[i].speed == 2 && counter % 3) {
+        ctx.drawImage(planet[i].name, planet[i].x, planet[i].y);
+      } else {
+        ctx.drawImage(planet[i].name, planet[i].x--, planet[i].y);
+      }
+    } else {
+      planet[i].y = newY();
+      planet[i].x = cvs.width + 10;
+      planet[i].name = randomNamePlanet();
+    }
   }
 }
 
-function replaceBlock(i) {
-  let x = block[i].x;
-  let y = block[i].y;
-  let yBottom = block[i].y + blockUp.height + interval;
+function drawBlocks() {
+  for (let i = 0; i < block.length; i++) {
+    if (block[i].x + blockUp.width >= 0) {
+      let yDown = block[i].y + blockUp.height + interval;
 
-  ctx.drawImage(blockUp, x, y);
-  ctx.drawImage(blockDown, x, yBottom);
-  // increase speed
-  block[i].x -= speed;
-}
+      ctx.drawImage(blockUp, block[i].x, block[i].y);
+      ctx.drawImage(blockDown, block[i].x, yDown);
+      block[i].x -= speed;
+    } else {
+      scoreGame++;
+      let sumScore = Number(localStorage.getItem("sumScore")) + 1;
+      localStorage.setItem("sumScore", sumScore);
+      scoreAudio.play();
 
-function createNewBlock() {
-  block.push({
-    x: cvs.width,
-    y: Math.floor(Math.random() * blockUp.height) - blockUp.height,
-    isVisible: true
-  });
-
-  //increase speed before every 4 blocks
-  if (block.length == 3) speed++;
-  if (block.length == 8) speed++;
-  if (block.length == 12) speed++;
-  if (block.length == 16) speed++;
-}
-
-function birdCrash(i) {
-  let x = block[i].x;
-  let y = block[i].y;
-
-  let inBlock = player.x + spaceShip.width >= x ? true : false;
-  let inBlock2 = player.x <= x + blockUp.width ? true : false;
-
-  // check: is spaceShip touch block
-  if (
-    inBlock &&
-    inBlock2 &&
-    (player.y <= y + blockUp.height ||
-      player.y + spaceShip.height >= y + blockUp.height + interval)
-  ) {
-    endOfLife();
-    return true;
+      block[i].y = Math.floor(Math.random() * blockUp.height) - blockUp.height;
+      block[i].x = cvs.width + 60;
+      if (scoreGame == 1) speed++;
+      if (scoreGame == 7) speed++;
+      if (scoreGame == 15) speed++;
+      if (scoreGame == 21) speed++;
+    }
   }
+}
 
-  // check: is spaceShip touch ground
-  if (player.y + spaceShip.height >= cvs.height - crashLine.height) {
-    endOfLife();
-    return true;
+function checkCrash() {
+  if (isTouchBlock() || isFall()) endOfLife();
+}
+
+function isFall() {
+  if (player.y + spaceShip.height >= cvs.height - crashLine.height) return true;
+}
+
+function isTouchBlock() {
+  for (let i = 0; i < block.length; i++) {
+    let x = block[i].x;
+    let y = block[i].y;
+    let inBlock = player.x + spaceShip.width >= x ? true : false;
+    let inBlock2 = player.x <= x + blockUp.width ? true : false;
+
+    if (
+      inBlock &&
+      inBlock2 &&
+      (player.y <= y + blockUp.height ||
+        player.y + spaceShip.height >= y + blockUp.height + interval)
+    ) {
+      return true;
+    }
   }
 }
 
 function endOfLife() {
   backgroundMusic.pause();
-
   let lifes = Number(localStorage.getItem("lifes")) - 1;
+  console.log("Lifes :", lifes);
 
   localStorage.setItem("lifes", lifes);
 
   if (lifes === 0) {
-    gameOver.play();
-
-    ctx.drawImage(crashLine, 0, cvs.height - crashLine.height);
-    drawLifes();
-    drawStatistic();
-
-    alert("Game Over");
+    gameOver.play().then(() => alert("Game Over"));
 
     checkRecord();
-
     newGame();
   }
+
+  isPause = true;
+  location.reload();
+
+  // var playPromise = document.querySelector("video").play();
+
+  // // In browsers that don’t yet support this functionality,
+  // // playPromise won’t be defined.
+  // if (playPromise !== undefined) {
+  //   playPromise
+  //     .then(function() {
+  //       // Automatic playback started!
+  //     })
+  //     .catch(function(error) {
+  //       // Automatic playback failed.
+  //       // Show a UI element to let the user manually start playback.
+  //     });
+  // }
 }
 
 function setStartProperties() {
@@ -292,28 +254,20 @@ function setStartProperties() {
   saturn.src = "./src/img/saturn.png";
   earth.src = "./src/img/earth.png";
   moon.src = "./src/img/moon.png";
-  star.src = "./src/img/star.png";
+  star.src = "./src/img/star1.png";
   asteroid.src = "./src/img/asteroid.png";
 
-  planet.arr = [saturn, earth, moon, star, asteroid];
-  planet.x = 375 + Math.round((Math.random() * cvs.width) / 2);
-  planet.y = Math.round(Math.random() * (cvs.height - crashLine.height));
-  let random = Math.round(Math.random() * 4);
-  planet.name = planet.arr[random];
+  createPlanet();
+  createPlanet(2);
+  createPlanet(3);
 
-  planet1.arr = [saturn, earth, moon, star, asteroid];
-  planet1.x = 450 + Math.round((Math.random() * cvs.width) / 2);
-  planet1.y = Math.round(Math.random() * (cvs.height - crashLine.height));
-  random = Math.round(Math.random() * 4);
-  planet1.name = planet1.arr[random];
-
-  createNewBlock();
+  createBlock();
+  createBlock(Math.round((cvs.width * 2) / 3));
 
   // Start position of the player
   player = {
     x: 10,
-    y: 150,
-    gravitation: 1
+    y: 150
   };
 
   // set src of game sound
@@ -322,17 +276,33 @@ function setStartProperties() {
   backgroundMusic.src = "./src/audio/backgroundMusic.mp3";
   congratulations.src = "./src/audio/congratulations.mp3";
   gameOver.src = "./src/audio/gameOver.mp3";
+  beepStart.src = "./src/audio/beepStart.mp3";
 
   interval = 130;
   speed = 1;
   scoreGame = 0;
 }
 
+function createPlanet(panetSpeed = 1) {
+  planet.push({
+    x: newX(),
+    y: newY(),
+    speed: panetSpeed,
+    name: randomNamePlanet()
+  });
+}
+
+function createBlock(dist = 0) {
+  block.push({
+    x: cvs.width + dist,
+    y: Math.floor(Math.random() * blockUp.height) - blockUp.height
+  });
+}
+
 function moveUp() {
-  if (!isPause) {
-    player.y -= 10;
-    fly.play();
-  }
+  if (isPause) return;
+  player.y -= 15;
+  fly.play();
 }
 
 function checkRecord() {
@@ -345,4 +315,23 @@ function checkRecord() {
 
     localStorage.setItem("record", score);
   }
+}
+
+function movePlayer(ev) {
+  if (isPause) return;
+  if (ev.code === "KeyD") player.x += 10;
+  if (ev.code === "KeyA") player.x -= 10;
+  if (ev.code === "KeyS") player.y += 5;
+  if (ev.code === "KeyW") {
+    player.y -= 15;
+    fly.play();
+  }
+  checkBorders();
+}
+
+function checkBorders() {
+  if (player.x + spaceShip.width >= cvs.width)
+    player.x = cvs.width - spaceShip.width;
+  if (player.x <= 0) player.x = 0;
+  if (player.y <= 0) player.y = 0;
 }
