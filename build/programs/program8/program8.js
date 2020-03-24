@@ -252,7 +252,7 @@ function setStartProperties() {
   saturn.src = "./src/img/saturn.png";
   earth.src = "./src/img/earth.png";
   moon.src = "./src/img/moon.png";
-  star.src = "./src/img/star.png";
+  star.src = "./src/img/star1.png";
   asteroid.src = "./src/img/asteroid.png";
 
   createPlanet();
