@@ -1,0 +1,36 @@
+.player-1 {
+  position: absolute;
+  top: 180px;
+  left: 170px;
+  width: 340px;
+  padding: 20px 25px;
+  font-size: 22px;
+  z-index: 5;
+}
+
+.player-2 {
+  position: absolute;
+  top: 280px;
+  left: 170px;
+  z-index: 5;
+  width: 340px;
+  padding: 20px 25px;
+  font-size: 22px;
+  z-index: 5;
+}
+
+.unvisible {
+  width: 70px;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+
+.dont-show {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
