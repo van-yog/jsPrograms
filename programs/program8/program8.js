@@ -144,7 +144,7 @@ class Player {
         this.score++;
 
         // increase speed
-        if (!(this.score % 10)) {
+        if (!(this.score % 15)) {
           this.score;
           this.speed++;
         }
@@ -312,6 +312,7 @@ function checkWinner() {
   else if (players[0].score > players[1].score) alert("Winner: PLAYER - 1");
   else alert("Winner: PLAYER - 2");
 }
+
 function drawPlayers() {
   if (!noLifes) {
     isPause = true;
