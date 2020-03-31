@@ -230,6 +230,7 @@ let speed = startSpeed;
 // create and download images for game
 let coin = new Img("coin");
 let bgSpace = new Img("bgSpace");
+bgSpace.onload = drawBackground;
 let blockUp = new Img("blockUp");
 let blockDown = new Img("blockDown");
 let crashLine = new Img("crashLine");
@@ -426,11 +427,11 @@ function setStartProperties() {
 
   createBlocks(counterBlocks);
 
-  bgSpace.onload = drawBackground;
-  crashLine.onload = drawCrashLine;
+  setTimeout(drawFirstPlayer, 800);
 
-  player1.onload = drawFirstPlayer;
-  player2.onload = drawSecondPlayer;
+  setTimeout(drawSecondPlayer, 850);
+
+  crashLine.onload = drawCrashLine;
 }
 
 function drawFirstPlayer() {
