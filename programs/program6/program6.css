@@ -1,11 +1,14 @@
 .flight__label {
+  font-size: small;
   display: block;
 }
 
 .flight__section {
   display: inline;
   margin-right: 10px;
-  width: 50%;
+}
+.main__small {
+  font-size: small;
 }
 
 .flight__option {
