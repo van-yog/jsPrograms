@@ -2,7 +2,7 @@
 
 let toDo = document.querySelector("#toDo");
 let toDoList = document.querySelector("#toDoList");
-let btnForm = document.querySelector("#btnForm");
+// let btnForm = document.querySelector("#btnForm");
 let formToDo = document.querySelector("#formToDo");
 let filterFrom = document.querySelector("#filter");
 
@@ -13,17 +13,7 @@ let markTasks = document.forms.formToDo.markTasks;
 
 showLocalStorage();
 
-btnForm.addEventListener("click", () => {
-  toDo.classList.toggle("open");
-
-  let text = btnForm.innerText;
-  let openText = "Open toDo";
-  let closeText = "Close toDo";
-
-  btnForm.innerText = text === openText ? closeText : openText;
-});
-
-document.body.addEventListener("keydown", ev => {
+document.body.addEventListener("keydown", (ev) => {
   if (ev.keyCode === 13) {
     ev.preventDefault();
     console.log("Enter");
@@ -37,7 +27,7 @@ clearTasks.addEventListener("click", clear);
 
 markTasks.addEventListener("click", allDone);
 
-toDoList.addEventListener("click", ev => workWithTasks(ev));
+toDoList.addEventListener("click", (ev) => workWithTasks(ev));
 
 filterFrom.addEventListener("change", showFilteredTasks);
 
@@ -48,12 +38,12 @@ function showFilteredTasks() {
   let done = "showDone";
   let needToDo = "showNeedToDo";
 
-  task.forEach(el => el.classList.remove("hide"));
+  task.forEach((el) => el.classList.remove("hide"));
 
   if (filter === done) {
     let list = document.querySelectorAll(".listStyle");
 
-    list.forEach(el => {
+    list.forEach((el) => {
       if (!el.classList.contains("done")) {
         el.classList.add("hide");
       }
@@ -61,7 +51,7 @@ function showFilteredTasks() {
   } else if (filter === needToDo) {
     let needToDo = document.querySelectorAll(".done");
 
-    needToDo.forEach(el => el.classList.add("hide"));
+    needToDo.forEach((el) => el.classList.add("hide"));
   }
 }
 
@@ -153,7 +143,7 @@ function allDone() {
   }
   let allLi = toDoList.querySelectorAll("li");
 
-  allLi.forEach(item => {
+  allLi.forEach((item) => {
     item.classList.remove("hide");
     item.classList.add("done");
 
