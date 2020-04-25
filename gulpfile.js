@@ -11,67 +11,57 @@ let fileinclude = require("gulp-file-include");
 let browserSync = require("browser-sync").create();
 let reload = browserSync.reload;
 
-gulp.task("html", function() {
+gulp.task("html", function () {
   return gulp
-    .src(["./index.html", "./history/**/*.html", "./programs/**/*.html"], {
-      base: "./"
+    .src(["./index.html", "./history/**/*.html", "./programs/vanilla-js-?/*.html"], {
+      base: "./",
     })
     .pipe(fileinclude())
     .pipe(gulp.dest("build"));
 });
 
-gulp.task("css", function() {
+gulp.task("css", function () {
   return gulp
-    .src(["./programs/**/*.css", "./history/**/*.css"], { base: "./" })
+    .src(["./programs/vanilla-js-?/*.css", "./history/**/*.css"], { base: "./" })
     .pipe(cssmin())
     .pipe(rename({ suffix: ".min" }))
     .pipe(gulp.dest("build"));
 });
 
-gulp.task("js", function() {
-  return gulp
-    .src("./programs/**/*.js", { base: "./" })
-    .pipe(minify())
-    .pipe(gulp.dest("build"));
+gulp.task("js", function () {
+  return gulp.src("./programs/vanilla-js-?/*.js", { base: "./" }).pipe(minify()).pipe(gulp.dest("build"));
 });
 
-gulp.task("css:libs", function() {
-  return gulp
-    .src("./src/css/*.css")
-    .pipe(concat("libs.min.css"))
-    .pipe(cssmin())
-    .pipe(gulp.dest("build/src/css"));
+gulp.task("css:libs", function () {
+  return gulp.src("./src/css/*.css").pipe(concat("libs.min.css")).pipe(cssmin()).pipe(gulp.dest("build/src/css"));
 });
 
-gulp.task("js:libs", function() {
-  return gulp
-    .src("./src/js/*.js")
-    .pipe(concat("libs.min.js"))
-    .pipe(gulp.dest("build/src/js"));
+gulp.task("js:libs", function () {
+  return gulp.src("./src/js/*.js").pipe(concat("libs.min.js")).pipe(gulp.dest("build/src/js"));
 });
 
-gulp.task("img", function() {
+gulp.task("img", function () {
   return gulp
     .src(["./src/**/*.{jpg,png}", "./history/**/*.{jpg,png}", "./programs/**/src/img/*.{jpg,png}"], {
-      base: "./"
+      base: "./",
     })
     .pipe(imagemin())
     .pipe(gulp.dest("build"));
 });
 
-gulp.task("audio", function() {
+gulp.task("audio", function () {
   return gulp.src("./programs/**/src/audio/**.*", { base: "./" }).pipe(gulp.dest("build"));
 });
 
-gulp.task("clean", function() {
+gulp.task("clean", function () {
   return gulp.src("build", { read: false }).pipe(clean());
 });
 
 gulp.task("build", gulp.parallel("html", "css", "js", "js:libs", "css:libs", "img", "audio"));
 
-gulp.task("webserver", function() {
+gulp.task("webserver", function () {
   browserSync.init({
-    server: "./build"
+    server: "./build",
   });
 
   gulp.watch(["./index.html", "./history/**/*.html", "./programs/**/*.html"], gulp.series("html")).on("change", reload);

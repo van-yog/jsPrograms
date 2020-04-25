@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @@include('../../template/programs/head.html')
+    <title>My JS - VISA/MasterCard app</title>
+  </head>
+
+  <body>
+    <!-- Mobile navigation -->
+    @@include('../../template/programs/mobileNavigation.html')
+
+    <div class="container-fluid">
+      <div class="row m-1">
+        <!-- Header -->
+        <div class="col-12 mx-auto mt-auto text-center mb-3">
+          <h1 class="m-1 d-none d-md-inline">
+            <a href="../../index.html" class="text-muted text-decoration-none">Frond-End developer</a>
+          </h1>
+          <h2>
+            7 - VISA/MasterCard
+          </h2>
+        </div>
+        <!-- Desktop navigation -->
+        <div class="col-3 d-none d-md-block">
+          @@include('../../template/programs/desktopNavigation.html')
+        </div>
+        <!-- Main content -->
+        <div class="col-12 col-md-6 mb-5 border rounded animated fadeIn slow">
+          <form name="data" id="data">
+            <div class="row">
+              <div class="col-md-4 col-10 d-flex flex-column">
+                <label>
+                  Name
+                </label>
+                <input type="text" name="name" />
+              </div>
+
+              <div class="col-md-4 col-10 d-flex flex-column">
+                <label>
+                  Surname
+                </label>
+                <input type="text" name="surname" />
+              </div>
+              <div class="col-md-4 col-10 d-flex flex-column mb-2">
+                <label>
+                  Type
+                </label>
+                <select name="type">
+                  <option value="VISA">VISA</option>
+                  <option value="MASTERCARD">MasterCard</option>
+                  <option value="MAESTRO">Maestro</option>
+                  <option value="RANDOM">Random</option>
+                </select>
+              </div>
+              <button id="btnCard" type="button" class="btn btn-primary mx-3">Ganarate</button>
+              <button id="btnClear" type="button" class="btn btn-primary inline">Delete all</button>
+            </div>
+          </form>
+
+          <ul id="ul-card" class="list-unstyled"></ul>
+        </div>
+        <!-- Right block with more information -->
+        <div class="col-12 col-md-3 mt-5 mt-md-0">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="font-weight-bold">
+                Work with
+              </span>
+            </li>
+            <li class="list-group-item">
+              HTML
+            </li>
+            <li class="list-group-item">
+              CSS
+            </li>
+            <li class="list-group-item">
+              JavaScript <br />
+              <span class="small text-mutted">
+                Math.random
+              </span>
+            </li>
+            <li class="list-group-item">
+              Bootstrap
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    @@include('../../template/programs/footer.html')
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    @@include('../../template/programs/scripts.html')
+  </body>
+</html>

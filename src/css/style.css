@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#desktopNav {
+  visibility: hidden;
+}
+
+#asideBar {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+.avatar {
+  /* transform: rotate(12deg); */
+  position: relative;
+  padding: 5px;
+  margin: 20px;
+  box-shadow: 1px 1px 14px grey;
+  animation: avatar-animation 5s ease-in-out infinite alternate;
+}
+
+.avatar2 {
+  position: absolute;
+}
+
+.avatar::after {
+  content: " ";
+  position: absolute;
+  background-image: url("../img/avatar2.jpg");
+}
+
+.show-name:after {
+  content: "_";
+  opacity: 0;
+  animation: blinking 1.2s 5;
+}
+
+.card {
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 1px 1px 14px grey;
+  transition: all 0.7s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+@keyframes avatar-animation {
+  0% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

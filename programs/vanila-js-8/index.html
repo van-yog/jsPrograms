@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @@include('../../template/programs/head.html')
+    <title>My JS - FavoriteFilm app</title>
+    <style>
+      #editFilm {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Mobile navigation -->
+    @@include('../../template/programs/mobileNavigation.html')
+
+    <div class="container-fluid">
+      <div class="row m-1">
+        <!-- Header -->
+        <div class="col-12 mx-auto mt-auto text-center mb-3">
+          <header>
+            <h1 class="m-1 d-none d-md-inline">
+              <a href="../../index.html" class="text-muted text-decoration-none">Frond-End developer</a>
+            </h1>
+            <h2>
+              8 - Favorite Film
+            </h2>
+          </header>
+        </div>
+        <!-- Desktop navigation -->
+        <div class="col-3 d-none d-md-block">
+          @@include('../../template/programs/desktopNavigation.html')
+        </div>
+        <!-- Main content -->
+        <div class="col-12 col-md-6 mb-5 animated fadeIn slow">
+          <main>
+            <div class="mb-2">
+              <p>This program ceate object Film and you change it by inputs</p>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick='document.getElementById("yourFilm").innerHTML=showFavoriteFilm()'
+              >
+                Show Film
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="editFavoriteFilm()">
+                Edit Film
+              </button>
+            </div>
+            <div id="yourFilm"></div>
+            <div id="editFilm">
+              <div class="p-3 border">
+                <form name="formFilm">
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">Name of Film</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="name" placeholder="Lord Of The Rings" />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="director" class="col-sm-3 col-form-label">Director </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="director" placeholder="Name of Director" />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="year" class="col-sm-3 col-form-label">Year of the film </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="year" placeholder="2001" />
+                    </div>
+                  </div>
+                  <fieldset class="form-group">
+                    <div class="row">
+                      <label class="col-form-label col-sm-3 pt-0">Oscars</label>
+                      <div class="col-sm-9">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="gridRadios"
+                            id="oscarYes"
+                            value="Yes"
+                            checked
+                          />
+                          <label class="form-check-label" for="oscarYes">
+                            Yes
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="oscarNo" value="No" />
+                          <label class="form-check-label" for="oscarNo">
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <div class="form-group row">
+                    <label for="rate" class="col-sm-3 col-form-label">Rating</label>
+                    <select class="custom-select col-10 col-sm-5 ml-3" id="rate">
+                      <option selected>Rate...</option>
+                      <option value="1">1 star</option>
+                      <option value="2">2 stars</option>
+                      <option value="3">3 stars</option>
+                      <option value="4">4 stars</option>
+                      <option value="5">5 stars</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-10">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        onclick='document.getElementById("yourFilm").innerHTML=saveAndShow()'
+                      >
+                        Save and show
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </main>
+        </div>
+        <!-- Right block with more information -->
+        <div class="col-12 col-md-3 mt-5 mt-md-0">
+          <aside>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="font-weight-bold">
+                  Work with
+                </span>
+              </li>
+              <li class="list-group-item">
+                HTML5 <br />
+                <span class="small text-mutted">
+                  forms, buttons
+                </span>
+              </li>
+              <li class="list-group-item">
+                JavaScript <br />
+                <span class="small text-mutted">
+                  object, functions, getElementById,
+                </span>
+              </li>
+              <li class="list-group-item">
+                Bootstrap <br />
+                <span class="small text-mutted">
+                  navbar, d-none, list-group, btn
+                </span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    @@include('../../template/programs/footer.html')
+
+    <!-- Scripts -->
+
+    @@include('../../template/programs/scripts.html')
+  </body>
+</html>
