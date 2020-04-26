@@ -42,7 +42,7 @@ body {
 
 .card {
   padding: 20px;
-  margin: 20px;
+  margin: 20px 0px;
   box-shadow: 1px 1px 14px grey;
   transition: all 0.7s ease-in-out;
 }
