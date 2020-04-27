@@ -57,7 +57,11 @@ gulp.task("clean", function () {
   return gulp.src("build", { read: false }).pipe(clean());
 });
 
-gulp.task("build", gulp.parallel("html", "css", "js", "js:libs", "css:libs", "img", "audio"));
+gulp.task("react", function () {
+  return gulp.src("./programs/react-js-?/build/**").pipe(gulp.dest("build/programs/"));
+});
+
+gulp.task("build", gulp.parallel("html", "css", "js", "js:libs", "css:libs", "img", "audio", "react"));
 
 gulp.task("webserver", function () {
   browserSync.init({
